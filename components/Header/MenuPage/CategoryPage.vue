@@ -1,7 +1,5 @@
 <template>
-  <div :class="{
-    '-translate-x-0': statusActivity
-  }"  class="-translate-x-full py-6 transition duration-300 absolute bg-white px-4 h-[100vh] text-black top-0 left-0 z-[31] w-full ">
+  <div class="-translate-x-full py-6 transition duration-300 absolute bg-white px-4 h-[100vh] text-black top-0 left-0 z-[31] w-full ">
     <div class="category-page container mx-auto">
       <div class="h-16 flex justify-between items-center">
         <img @click="back" class="cursor-pointer w-[12px]" :src="LeftArrow" />

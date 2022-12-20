@@ -1,9 +1,7 @@
 <template>
+  <div style="" class="h-[588px] w-full" :class="[url]">
 
-<div style="" class="h-[588px] slider-bg w-full ">
-
-</div>
-
+  </div>
 </template>
 <style>
 .slider-bg {
@@ -12,6 +10,11 @@
   background-size: cover;
 }
 </style>
-<script lang="ts">
+<script lang="ts" setup>
+import {defineProps} from 'vue';
+
+const props = defineProps(['item']);
+
+const url = `bg-[${props.item.url}]`
 
 </script>
