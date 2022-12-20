@@ -12,6 +12,9 @@
     "nuxt": "3.0.0"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.6",
+    "axios": "^1.2.1",
+    "pinia": "^2.0.28",
     "swiper": "^8.4.5",
     "tailwind": "^4.0.0"
   }
