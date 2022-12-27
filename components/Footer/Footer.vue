@@ -7,30 +7,40 @@
   <FooterMenuItem title="ИЗДЕЛИЯ" :items="itemsS">
   </FooterMenuItem>
 </div>
-  <div class="text-lg px-4 bg-[#EEEEEE] ">
-    <div class="container mx-auto space-y-10 py-14 flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:space-y-0">
-      <div class="space-x-4 flex items-center">
-        <img :src="InstagramIcon" alt="">
-        <img :src="TwitterIcon" alt="">
+  <div class="text-lg px-4 bg-[#27213D] ">
+    <div class="container text-white mx-auto space-y-10 py-14 flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:space-y-0">
+      <div class="space-x-4 flex footer__icon items-center">
+        <InstagramIcon></InstagramIcon>
+        <TwitterIcon></TwitterIcon>
       </div>
-      <div class="flex space-x-2">
-        <img :src="PhoneIcon" alt="">
+      <div class="flex space-x-2 items-center footer__icon">
+        <PhoneIcon></PhoneIcon>
         <div>+7 (756) 467-23-89</div>
       </div>
-      <div class="flex space-x-2">
-        <img :src="MailIcon" alt="">
+      <div class="flex space-x-2 items-center footer__icon">
+        <MailIcon></MailIcon>
         <div>service@declare.kz</div>
       </div>
     </div>
   </div>
 </template>
-
+<style lang="scss">
+.footer__icon {
+    & svg {
+      fill: white;
+      & path {
+        fill:white;
+        stroke: white;
+      }
+    }
+}
+</style>
 <script lang="ts" setup>
 import FooterMenuItem from "@/components/Footer/FooterMenuItem.vue";
-import InstagramIcon from '@/assets/icons/instagram.svg';
-import TwitterIcon from '@/assets/icons/twitter.svg';
-import PhoneIcon from '@/assets/icons/phone.svg';
-import MailIcon from '@/assets/icons/mail.svg';
+import InstagramIcon from 'assets/icons/instagram.vue';
+import TwitterIcon from 'assets/icons/twitter.vue';
+import PhoneIcon from 'assets/icons/phone.vue';
+import MailIcon from 'assets/icons/mail.vue';
 const itemsDeclare = [
   {
     title: 'О компании',

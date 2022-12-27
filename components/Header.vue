@@ -1,8 +1,9 @@
 <template>
   <header class="px-[18px] header fixed bg-white transition-transform
-                 z-[100] w-full"
+                 z-[100] w-full border-b border-b-[#F5F5F5]"
           :class="{
-                'translate-y-[-64px]': headerStore.hide
+                'translate-y-[-64px]': headerStore.hide,
+                'lg:translate-y-[-100px]': headerStore.hide
           }">
     <div class="container mx-auto
                 items-center lg:justify-between
@@ -17,29 +18,32 @@
       <div class="flex justify-center">
         <HeaderLogo></HeaderLogo>
       </div>
-      <div class="lg:flex hidden">
-        <div class="last:pr-[0px] pr-[60px]" v-for="menuItem in headerStore.menuList">
-          <div class="text-[#202020]">{{ menuItem.title }}</div>
-        </div>
-      </div>
+      <DesktopMenu></DesktopMenu>
       <div class="flex items-center justify-end">
         <UserIcon color="black"></UserIcon>
-        <HeartIcon class="ml-[17px]" color="black"></HeartIcon>
+        <HeartIcon width="20" height="18" class="ml-[17px]" color="black"></HeartIcon>
       </div>
-      <MobileMenu></MobileMenu>
+      <MobileMenu
+          v-if="headerStore.categories[headerStore.currentStep]"
+      ></MobileMenu>
     </div>
   </header>
 </template>
 <script lang="ts" setup>
-import {ref} from "vue";
+import {ref, onMounted} from "vue";
 import {useHeaderStore} from "~/stores/headerStore";
 import SearchIcon from 'assets/icons/search.vue';
 import HeartIcon from "assets/icons/heart.vue";
 import UserIcon from "assets/icons/user.vue";
 import MobileMenu from "~/components/Header/MobileMenu.vue";
+import DesktopMenu from "~/components/Header/DesktopMenu.vue";
 
 
 const headerStore = useHeaderStore();
+
+onMounted(() => {
+  headerStore.loadCategories({});
+});
 
 const language = ref({
   value: 'RU',

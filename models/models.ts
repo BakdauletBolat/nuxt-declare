@@ -4,3 +4,7 @@ export interface JsonApi {
     attributes: object;
 }
 
+export interface IOptions {
+    filter?: object;
+    include?: string[];
+}
