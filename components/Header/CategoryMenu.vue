@@ -1,12 +1,15 @@
 <template>
   <MobileMenuSkeleton v-if="headerStore.isLoadingCategoriesMenu"></MobileMenuSkeleton>
-  <div v-else class="flex flex-col w-full lg:flex-row lg:gap-[50px]">
+  <div v-else-if="headerStore.categoriesMenu" class="flex flex-col w-full lg:flex-row lg:gap-[40px]">
     <div v-for="(items, key) in headerStore.categoriesMenu">
-      <div class="text-base text-[#C7C7C7] py-[16px]">{{ key }}</div>
-      <div class="py-[16px] text-base" v-for="item in items">
+      <div class="text-base text-[#C7C7C7] py-[10px]">{{ key }}</div>
+      <div class="py-[10px] text-base" v-for="item in items">
         {{ item.attributes.name }}
       </div>
     </div>
+  </div>
+  <div v-else>
+    Нет категориев
   </div>
 </template>
 <script setup lang="ts">

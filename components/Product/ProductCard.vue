@@ -25,7 +25,7 @@
 </template>
 <script setup lang="ts">
 import Heart from "assets/icons/heart.vue";
-import ProductTestImg from 'assets/ring.png';
+import ProductTestImg from '@/assets/ring.png';
 import {defineProps} from 'vue';
 import {IProduct} from "~/models/product";
 

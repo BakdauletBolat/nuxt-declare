@@ -2,21 +2,12 @@ import {defineStore} from "pinia";
 import {ref, watch} from 'vue';
 import CategoryService from "~/services/category-service";
 import {ICategory, ICategoryMenu} from "~/models/category";
-// @ts-ignore
 import lodash from 'lodash';
 
 const defaultOffset = 550;
 let lastScroll = 0;
 
 const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
-
-interface IMobileMenuItem {
-    id: number,
-    title: string,
-    parent_id?: number;
-    children?: IMobileMenuItem[]
-}
-
 
 export const useHeaderStore = defineStore('header', () => {
     const hide = ref(false);

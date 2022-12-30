@@ -3,12 +3,12 @@
       class="bg-white px-4 py-6 duration-500 h-[100vh] overflow-scroll text-black absolute top-0 left-0 z-30 w-full -translate-y-[100%] transition-transform "
       :class="{'-translate-y-[0%]': headerStore.isOpenBurger}">
     <div class="h-16 flex justify-between items-center relative mx-auto container">
-      <img @click="navigateBack" class="cursor-pointer absolute top-0 w-[12px]" :src="LeftArrow" alt=""/>
+      <img @click="navigateBack" class="cursor-pointer absolute -translate-y-1/2 top-1/2 w-[12px]" :src="LeftArrow" alt=""/>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">{{ headerStore.activeCategory?.attributes.name }}</div>
     </div>
     <div class="container mx-auto">
       <div class="mobile-menu-navigator">
         <div v-if="headerStore.categories[headerStore.currentStep].length <= 0">
-          {{headerStore.activeCategory.attributes.name}}
           <CategoryMenu></CategoryMenu>
         </div>
         <div v-else class="flex cursor-pointer justify-between py-4"
@@ -31,7 +31,7 @@ import CategoryMenu from "~/components/Header/CategoryMenu.vue";
 const headerStore = useHeaderStore();
 
 const navigateBack = () => {
-  if (headerStore.currentStep === 1) {
+  if (headerStore.currentStep === 0) {
     headerStore.changeIsOpenBurger(false);
     return;
   }
