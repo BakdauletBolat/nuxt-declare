@@ -3,7 +3,9 @@ export default defineNuxtConfig({
     imports: {
         autoImport: false
     },
-    modules: ['@nuxtjs/tailwindcss',
+    modules: [
+        '@vueuse/nuxt',
+        '@nuxtjs/tailwindcss',
         '@pinia/nuxt'],
     build: {},
     css: [

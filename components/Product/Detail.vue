@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1 class="text-xl font-medium ">Кольцо обручальное Declare х Roza Rymbayeva из белого золота с бриллиатом</h1>
-    <div class="lg:mt-[28px] mt-[24px] text-base text-[#878787] font-normal">Артикул: TK00000408</div>
+    <h1 class="text-xl font-medium ">{{product.attributes.title}}</h1>
+    <div class="lg:mt-[28px] mt-[24px] text-base text-[#878787] font-normal">Артикул: {{product.attributes.article}}</div>
     <div class="lg:mt-[28px] mt-[24px] text-lg flex gap-[12px] items-center text-[#202020]">
-      162 500 ₸
-      <span class="text-base text-[#878787] line-through">250 000 ₸</span>
+      {{product.attributes.price}} ₸
+      <span class="text-base text-[#878787] line-through">{{product.attributes.old_price}} ₸</span>
     </div>
     <InfoText class="lg:mt-[28px] mt-[24px] text-base">В рассрочку от 5 990 ₸/мес
       <template v-slot:info-text>
@@ -61,6 +61,11 @@ import GroupButton from "~/components/UI/GroupButton.vue";
 import Button from "~/components/UI/Button.vue";
 import RightArrow from '@/assets/icons/right-arrow.svg';
 import Accordion from "~/components/UI/Accordion.vue";
+import { IProduct } from '~~/models/product';
+
+defineProps<{
+  product: IProduct
+}>()
 
 const activeId = ref(1);
 

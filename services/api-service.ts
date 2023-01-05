@@ -3,7 +3,7 @@ import axios from 'axios';
 export class ApiService {
 
     axiosAPI = axios.create({
-            baseURL: 'http://10.10.1.90:81/api/v1',
+            baseURL: 'https://erzh.kz//api/v1',
             timeout: 4000,
         }
     )
@@ -33,7 +33,7 @@ export class ApiService {
         }
         if (filter != undefined) {
             for (let key in filter) {
-                console.log(key);
+                filtered_url += `${key}=${filter[key]}&`
             }
         }
 

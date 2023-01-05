@@ -1,4 +1,4 @@
-import {JsonApi} from "~/models/models";
+import {JsonApi, IPicture} from "~/models/models";
 
 export interface IProduct extends JsonApi {
     attributes: {
@@ -7,7 +7,7 @@ export interface IProduct extends JsonApi {
         article: string;
         weigh: string;
         sample: string
-        "brand": {
+        brand: {
             id: number;
             name: string;
             slug: string;
@@ -15,6 +15,12 @@ export interface IProduct extends JsonApi {
         price: number,
         old_price: number,
         sale: number
+    };
+    picture: {
+        data: IPicture
+    };
+    pictures: {
+        data: IPicture[]
     }
 }
 

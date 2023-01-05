@@ -2,9 +2,7 @@
   <div>
     <HomeMainSlider></HomeMainSlider>
     <div class="pt-20 pb-16 text-center uppercase text-[22px] md:text-[28px]">
-      <RouterLink :to="{
-        name: 'product-list'
-      }">Специальные цены</RouterLink>
+      <div>Специальные цены</div>
     </div>
     <div v-if="homeStore.specialPriceProducts">
       <ProductSliderGroup :products="homeStore.specialPriceProducts"></ProductSliderGroup>

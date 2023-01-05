@@ -14,11 +14,14 @@
 }
 </style>
 <template>
-  <div class="grid container items-center mx-auto py-[25.5px] gap-[24px]+ lg:gap-0 lg:grid-cols-3 px-3">
+  <div class="grid container items-center mx-auto py-[25.5px] gap-[24px] lg:gap-0 lg:grid-cols-3 px-3"
+      :class="{
+        'justify-center': centered
+      }">
     <router-link v-if="backTitle" class="flex gap-[10px] text-[#878787] uppercase" :to="
     typeof backLink == 'string' ? backLink : {
-      name: backLink.name,
-      params: backLink.params
+      name: backLink?.name,
+      params: backLink?.params
     }
     ">
       <img :src="LeftArrow" alt="">
@@ -51,6 +54,7 @@ interface IBreadcrump {
 }
 
 defineProps<{
+  centered?: boolean,
   options: IBreadcrump[],
   backTitle?: string;
   backLink?: string | {
