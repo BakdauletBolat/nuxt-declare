@@ -3,7 +3,7 @@ import axios from 'axios';
 export class ApiService {
 
     axiosAPI = axios.create({
-            baseURL: 'https://erzh.kz//api/v1',
+            baseURL: 'https://erzh.kz/api/v1',
             timeout: 4000,
         }
     )
