@@ -1,9 +1,9 @@
 <template>
-    <div class="relative bg-primary h-[368px]">
-        <div class="category-card-img pt-14 flex justify-center w-full ">
-            <img class="w-[200px] h-[200px] object-contain" :src="CategoryTestImg" alt="">
+    <div class="relative bg-primary h-[368px] flex items-center justify-center relative">
+        <div class="category-card-img">
+            <img class="h-[232px] w-[232px] object-contain" :src="CategoryTestImg" alt="">
         </div>
-        <div class="category-footer pt-12">
+        <div class="category-footer absolute bottom-[48px]">
             <h3 class="text-center">КОЛЬЦА</h3>
         </div>
     </div>

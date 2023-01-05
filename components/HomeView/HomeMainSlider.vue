@@ -17,7 +17,7 @@ const modules = [Pagination];
 const pagination = {
   el: '.swiper-pagination',
   bulletActiveClass: 'product-slider-pagination-active',
-  bulletClass: 'product-slider-pagination-white',
+  bulletClass: 'product-slider-pagination bg-white',
   clickable: true,
   // dynamicBullets: true
 }
@@ -33,7 +33,7 @@ const onSlideChange = () => {
 <template>
   <swiper class="h-[588px]" :modules="modules"
           :pagination="pagination" :slides-per-view="1"
-          :space-between="50" @swiper="onSwiper"
+          @swiper="onSwiper"
 
           @slideChange="onSlideChange">
 
@@ -45,9 +45,3 @@ const onSlideChange = () => {
     <div class="swiper-pagination flex pb-7 justify-center"></div>
   </swiper>
 </template>
-<style>
-.product-slider-pagination-white {
-  @apply bg-white w-2.5 h-0.5 mx-1;
-  transition: .2s ease;
-}
-</style>

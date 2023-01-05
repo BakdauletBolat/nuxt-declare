@@ -1,85 +1,53 @@
 import {defineStore} from "pinia";
-import {ref} from 'vue';
+import {ref, watch} from 'vue';
 import CategoryService from "~/services/category-service";
-import {ICategoryMenu} from "~/models/category";
-import {ICategoryMenuData} from '@/services/category-service';
+import {ICategory, ICategoryMenu} from "~/models/category";
+import lodash from 'lodash';
 
-const headerHeight = 100;
 const defaultOffset = 550;
 let lastScroll = 0;
 
 const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
 
-interface IMobileMenuItem {
-    id: number,
-    title: string,
-    parent_id?: number;
-    children?: IMobileMenuItem[]
-}
-
-
-const menu_list = [
-    {
-        id: 1,
-        title: 'Ювелирные изделия',
-        children: [
-            {
-                id: 5,
-                title: 'Все изделия'
-            }
-        ]
-    },
-    {
-        id: 2,
-        title: 'Свадьба',
-        children: [
-            {
-                id: 5,
-                title: 'Все изделия'
-            }
-        ]
-    },
-    {
-        id: 3,
-        title: 'Подарки',
-        children: [
-            {
-                id: 5,
-                title: 'Все изделия'
-            }
-        ]
-    },
-    {
-        id: 4,
-        title: 'Серебро',
-        children: [
-            {
-                id: 5,
-                title: 'Все изделия'
-            }
-        ]
-    }
-]
-
-
 export const useHeaderStore = defineStore('header', () => {
     const hide = ref(false);
     const isHide = ref(false);
     const isOpenBurger = ref(false);
-    const categoriesMenu = ref<ICategoryMenu[]>([]);
-    const menuList = ref<IMobileMenuItem[]>(menu_list);
 
-    const activeCategoryMenu = ref<IMobileMenuItem>();
+    const isLoadingCategoriesMenu = ref(false);
 
-    const loadICategoriesMenu = async () => {
-        const items: ICategoryMenuData = await CategoryService.getCategoryMenuItems();
-        categoriesMenu.value = items.data;
+    const categories = ref<any>([]);
+    const currentStep = ref<number>(0);
+    const categoriesMenu = ref<{ [key: string]: ICategoryMenu[] } | undefined>(undefined);
+    const activeCategory = ref<ICategory | undefined>(undefined);
+
+    // const categoriesMenu = computed(() => );
+
+    const loadCategories = async ({}: any) => {
+        categories.value[0] = (await CategoryService.getCategories()).data;
     }
 
-    const changeActiveCategoryMenu = () => {
-
+    const loadCategoriesMenu = async () => {
+        isLoadingCategoriesMenu.value = true;
+        const menu_list: ICategoryMenu[] = (await CategoryService.getCategoriesMenu(activeCategory.value!.id)).data;
+        categoriesMenu.value = lodash.groupBy(menu_list, (menu: ICategoryMenu) => {
+            return menu.attributes.type;
+        });
+        console.log(menu_list, activeCategory.value!.id);
+        isLoadingCategoriesMenu.value = false;
     }
 
+
+    const nextPage = async (nextPage: number, nextPageChildren: ICategory[], activeCategoryData: ICategory) => {
+        categories.value[nextPage] = nextPageChildren;
+        activeCategory.value = activeCategoryData;
+        currentStep.value = nextPage;
+        await loadCategoriesMenu();
+    }
+
+    const onBack = () => {
+        currentStep.value -= 1;
+    }
 
     const changeIsOpenBurger = (value: boolean) => {
         isOpenBurger.value = value;
@@ -94,7 +62,12 @@ export const useHeaderStore = defineStore('header', () => {
         lastScroll = scrollPosition();
     }
 
-    return {hide, isHide, isOpenBurger, activeCategoryMenu,
-            menuList,
-            changeIsOpenBurger, useScrollActive}
+    return {
+        hide, isHide, isOpenBurger, categories, currentStep, activeCategory,
+        categoriesMenu,
+        isLoadingCategoriesMenu,
+        loadCategoriesMenu,
+        onBack, nextPage,
+        changeIsOpenBurger, useScrollActive, loadCategories
+    }
 })
