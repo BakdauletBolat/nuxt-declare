@@ -63,7 +63,6 @@ export interface IProductData {
     meta: IMeta
 }
 
- , , 
 export interface IColor extends JsonApi {
     attributes: {
         name: string;

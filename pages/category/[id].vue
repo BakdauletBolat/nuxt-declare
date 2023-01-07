@@ -70,7 +70,8 @@ const loadActiveCategory = async () => {
 
 const loadProducts = async () => {
     // await loadActiveCategory();
-    productStore.loadProducts();
+    productStore.loadProducts(1, {category: headerStore.activeCategory!.id});
+    productStore.loadFilters(headerStore.activeCategory!.id!);
 }
 onMounted(()=>{
     loadProducts();

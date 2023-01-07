@@ -13,6 +13,7 @@ export const useHomeStore = defineStore('home-store', () => {
     const banners = ref<IBanner[]>([]);
     const specialPriceProducts = ref<IProduct[]>([]);
     const lastCollection = ref<ICollection>();
+    const loadingSpecialPriceProducts = ref<boolean>(false);
 
     const loadBanners = async () => {
         const bannerData: IBannerData = await BannerService.getBanners({ include: ['picture']});
@@ -20,8 +21,10 @@ export const useHomeStore = defineStore('home-store', () => {
     }
 
     const loadSpecialPriceProducts = async () => {
+        loadingSpecialPriceProducts.value = true;
         const productsData: IProductData = await  ProductService.getProducts({});
         specialPriceProducts.value = productsData.data;
+        loadingSpecialPriceProducts.value = false;
     }
 
     const loadLastCollection = async () => {
@@ -37,6 +40,7 @@ export const useHomeStore = defineStore('home-store', () => {
         lastCollection,
         loadBanners,
         loadLastCollection,
+        loadingSpecialPriceProducts,
         loadSpecialPriceProducts,
     }
 

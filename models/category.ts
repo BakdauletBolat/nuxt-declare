@@ -8,6 +8,7 @@ export interface ICategoryMenu extends JsonApi {
         entity_id: number;
         category_id: number;
     }
+    is_select?: boolean
 }
 
 export interface ICategory extends JsonApi {

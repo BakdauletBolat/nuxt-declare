@@ -1,7 +1,7 @@
 <template>
-  <div class="accordion" @click="toggle">
-    <div class="accordion__row">
-      <div class="accordion__title">
+  <div class="accordion">
+    <div class="accordion__row" @click="toggle">
+      <div class="accordion__title" >
         <slot name="title"></slot>
       </div>
       <div class="accordion__button"

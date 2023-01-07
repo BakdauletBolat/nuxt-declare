@@ -1,17 +1,19 @@
 <template>
+
     <Transition name="slide">
         <div v-if="open">
-            <div class="w-full fixed top-0 right-0 h-screen bg-black z-[100]">
+            <div @click="emit('handleCancel')" class="w-full fixed top-0 right-0 h-screen cursor-pointer bg-[rgba(0,0,0,0.5)] z-[100]">
             </div>
-            <div class="w-full fixed top-0 right-0 h-screen bg-white z-[100]  p-[20px]">
-
+            <div class="w-full fixed top-0 right-0 h-screen bg-white z-[100] lg:w-[400px]  p-[20px] overflow-scroll">
                 <div class="h-16 flex justify-between items-center relative mx-auto container]">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 uppercase">{{ title }}</div>
                     <img @click="emit('handleCancel')" class="cursor-pointer absolute top-0 right-0" :src="ExitIcon"
                         alt="" />
                 </div>
+                <slot></slot>
 
             </div>
+
         </div>
     </Transition>
 </template>

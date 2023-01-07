@@ -1,9 +1,22 @@
 <template>
   <div>
-    <HomeMainSlider></HomeMainSlider>
+    <Suspense>
+      <template #default>
+        <HomeMainSlider></HomeMainSlider>
+      </template>
+      <template #fallback>
+        <div class="mt-[150px]">Loading</div>
+      </template>
+    </Suspense>
+    
     <div class="pt-20 pb-16 text-center uppercase text-[22px] md:text-[28px]">
       <div>Специальные цены</div>
     </div>
+    <div v-if="homeStore.loadingSpecialPriceProducts && homeStore.specialPriceProducts.length < 1">
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-[20px] px-[20px]">
+                <ProductSkeleton v-for="index in Array.from(Array(3).keys())"></ProductSkeleton>
+            </div>
+        </div>
     <div v-if="homeStore.specialPriceProducts">
       <ProductSliderGroup :products="homeStore.specialPriceProducts"></ProductSliderGroup>
     </div>
