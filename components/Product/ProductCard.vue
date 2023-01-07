@@ -18,7 +18,7 @@
             }
         }">
             <div class="product-card-img lg:pt-[56px] pt-[60px] lg:px-[112px] px-[28px] flex justify-center w-full">
-            <img class="w-full object-contain" :src="product.picture.data.attributes.url" alt="">
+            <img class="w-[124px] h-[124px] lg:w-[232px] lg:h-[232px] object-contain" :src="product.picture.data.attributes.url" alt="">
         </div>
         </RouterLink>
         
@@ -40,10 +40,8 @@
 </template>
 <script setup lang="ts">
 import Heart from "assets/icons/heart.vue";
-import ProductTestImg from '@/assets/ring.png';
 import {defineProps} from 'vue';
 import {IProduct} from "~/models/product";
-import { ICollection } from "~~/models/collection";
 
 defineProps<{
   product: IProduct

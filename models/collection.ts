@@ -1,4 +1,5 @@
 import { JsonApi } from "~/models/models";
+import { IPicture } from "./banner";
 
 
 
@@ -11,6 +12,9 @@ export interface ICollection extends JsonApi {
         description: string;
         created_at: Date;
         style: string;
+    }
+    picture: {
+        data: IPicture
     }
 }
 

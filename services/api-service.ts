@@ -4,7 +4,7 @@ export class ApiService {
 
     axiosAPI = axios.create({
             baseURL: 'https://clientauth-test.evrika.com/api/v1',
-            timeout: 4000,
+            timeout: 10000,
         }
     )
 
@@ -22,7 +22,7 @@ export class ApiService {
     }
 
 
-    async get<T>(url: string, filter?: object, include?:string[]) {
+    async get<T>(url: string, filter?: any, include?:string[]) {
         let filtered_url = '/?';
 
         if (include != undefined) {

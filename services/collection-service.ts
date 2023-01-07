@@ -1,11 +1,17 @@
 import {ApiService} from "~/services/api-service";
 import {IOptions} from "~/models/models";
-import { ICollectionData } from "~~/models/collection";
+import { ICollectionData,ICollection } from "~~/models/collection";
 
 class CollectionService extends ApiService{
 
     async getRandomCollections({filter, include}:IOptions) {
         return await this.get<ICollectionData>('/catalog/collections',filter, include);
+    }
+
+    async getLastCollection({filter, include}:IOptions) {
+        return await this.get<{
+            data: ICollection
+        }>('/catalog/collections/get/last', filter,include);
     }
 
 }

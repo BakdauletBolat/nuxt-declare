@@ -3,7 +3,7 @@
       class="bg-white px-4 py-6 duration-500 h-[100vh] overflow-scroll text-black absolute top-0 left-0 z-30 w-full -translate-y-[100%] transition-transform "
       :class="{'-translate-y-[0%]': headerStore.isOpenBurger}">
     <div class="h-16 flex justify-between items-center relative mx-auto container">
-      <img @click="navigateBack" class="cursor-pointer absolute top-0 w-[12px]" :src="LeftArrow" alt=""/>
+      <img @click="navigateBack" class="cursor-pointer absolute top-0 h-[21px] w-[21px]" :src="LeftArrow" alt=""/>
       <div class="absolute top-0 left-1/2 -translate-x-1/2">{{ headerStore.activeCategory?.attributes.name }}</div>
     </div>
     <div class="container mx-auto">

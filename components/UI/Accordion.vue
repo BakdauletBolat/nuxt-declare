@@ -13,7 +13,10 @@
          :class="{
         'accordion__body--active': isOpen
           }">
-      <slot name="body"></slot>
+      <div class="pt-[20px]">
+        <slot name="body"></slot>
+      </div>
+     
     </div>
   </div>
 </template>
@@ -39,13 +42,13 @@ const toggle = () => {
 }
 
 .accordion__body {
-  transition: max-height 0.2s ease;
+  transition: all .2s ease;
   transform-origin: top;
   overflow: hidden;
   max-height: 0;
 
   &--active {
-    transition: max-height 0.2s ease;
+    transition: all .5s ease;
     max-height: 100vh;
   }
 }

@@ -4,12 +4,15 @@ import {IProduct, IProductData} from "~/models/product";
 import {ref} from 'vue';
 import BannerService from "~/services/banner-service";
 import ProductService from "~/services/product-service";
+import { ICollection } from "~~/models/collection";
+import collectionService from "~~/services/collection-service";
 
 
 export const useHomeStore = defineStore('home-store', () => {
 
     const banners = ref<IBanner[]>([]);
     const specialPriceProducts = ref<IProduct[]>([]);
+    const lastCollection = ref<ICollection>();
 
     const loadBanners = async () => {
         const bannerData: IBannerData = await BannerService.getBanners({ include: ['picture']});
@@ -21,12 +24,19 @@ export const useHomeStore = defineStore('home-store', () => {
         specialPriceProducts.value = productsData.data;
     }
 
+    const loadLastCollection = async () => {
+        const lastCollectionData: ICollection = (await collectionService.getLastCollection({include: ['picture']})).data;
+        lastCollection.value = lastCollectionData;
+    }
+
 
 
     return {
         banners,
         specialPriceProducts,
+        lastCollection,
         loadBanners,
+        loadLastCollection,
         loadSpecialPriceProducts,
     }
 

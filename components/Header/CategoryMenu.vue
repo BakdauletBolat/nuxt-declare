@@ -4,7 +4,10 @@
     <div v-for="(items, key) in headerStore.categoriesMenu">
       <div class="text-base text-[#C7C7C7] py-[10px]">{{ key }}</div>
       <div class="py-[10px] text-base" v-for="item in items">
-        <RouterLink @click="headerStore.changeIsOpenBurger(false)" :to="{
+        <RouterLink @click="()=>{
+          headerStore.changeIsOpenBurger(false);
+          headerStore.currentStep = 0;
+        }" :to="{
           name: 'category-id',
           params: {
             id: headerStore.activeCategory?.id

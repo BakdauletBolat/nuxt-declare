@@ -19,7 +19,17 @@ export const useHeaderStore = defineStore('header', () => {
     const categories = ref<any>([]);
     const currentStep = ref<number>(0);
     const categoriesMenu = ref<{ [key: string]: ICategoryMenu[] } | undefined>(undefined);
-    const activeCategory = ref<ICategory | undefined>(undefined);
+    const activeCategory = ref<ICategory | undefined>({
+        id: 1,
+        object: 'Category',
+        attributes: {
+            name: 'Default',
+            slug: 'Degault'
+        },
+        children: {
+            data: []
+        }
+    });
 
     // const categoriesMenu = computed(() => );
 

@@ -1,14 +1,15 @@
 <template>
   <div>
     <Header></Header>
-    <slot/>
-    <Footer></Footer>
+    <slot></slot>
+    <FooterVue></FooterVue>
   </div>
 </template>
 <script lang="ts" setup>
 
 import {onUnmounted, onMounted} from 'vue';
 import {useHeaderStore} from "~/stores/headerStore";
+import FooterVue from '~~/components/Footer/Footer.vue';
 
 const headerStore = useHeaderStore();
 

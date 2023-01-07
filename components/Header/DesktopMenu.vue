@@ -3,9 +3,7 @@
     <div class="last:pr-[0px] pr-[60px]" v-for="category in headerStore.categories[0]">
       <div @click="headerStore.nextPage(1, category.children.data, category)" 
             class="text-[rgba(39, 33, 61, 0.7)] cursor-pointer border-b-0" 
-           :class="{
-            'active-link': category.id === headerStore.activeCategory?.id
-           }">
+          >
         {{ category.attributes.name }}
       </div>
     </div>

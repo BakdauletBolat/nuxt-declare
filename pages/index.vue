@@ -8,13 +8,13 @@
       <ProductSliderGroup :products="homeStore.specialPriceProducts"></ProductSliderGroup>
     </div>
 
-    <div class="bg-primary mt-20">
+    <div class="bg-primary mt-20 bg-[url(@/assets/Banner.png)] bg-cover bg-no-repeat">
       <div class="text-white container flex mx-auto justify-center md:justify-end">
         <div class="md:pt-[100px] md:pr-10 md:pb-16 py-[84px] px-[30px]">
-          <div class="text-[28px] uppercase">НОВАЯ КОЛЛЕКЦИЯ</div>
-          <div class="text-lg pt-7 uppercase">ROZA RYMBAYEVA</div>
-          <div class="text-lg pt-5">Краткое описание коллекции</div>
-          <div class="text-lg pt-[156px] font-semibold">КОЛЛЕКЦИЯ ROZA RYMBAYEVA</div>
+          <div class="text-[28px] uppercase">{{homeStore.lastCollection?.attributes.title }}</div>
+          <div class="text-lg pt-7 uppercase">{{homeStore.lastCollection?.attributes.author}}</div>
+          <div class="text-lg pt-5">{{homeStore.lastCollection?.attributes.small_description}}</div>
+          <div class="text-lg pt-[156px] font-semibold">{{homeStore.lastCollection?.attributes.btn_text}}</div>
         </div>
       </div>
     </div>
@@ -50,6 +50,7 @@ import {useHomeStore} from "~/stores/homeStore";
 const homeStore = useHomeStore();
 
 onMounted(() => {
-  homeStore.loadSpecialPriceProducts()
+  homeStore.loadSpecialPriceProducts();
+  homeStore.loadLastCollection();
 });
 </script>

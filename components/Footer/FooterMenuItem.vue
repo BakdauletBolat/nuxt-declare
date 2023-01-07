@@ -12,12 +12,11 @@
       <div v-if="items == undefined || items.length <= 0">
         <class class="py-2">Нет данных</class>
       </div>
-      <div class="py-2" v-for="item in items">
+      <div class="py-2" :key="item.title" v-for="item in items">
         <router-link :to="item.url">{{item.title}}</router-link>
       </div>
     </div>
   </div>
-
 </template>
 <script lang="ts" setup>
 import {defineProps,ref} from 'vue';
@@ -29,14 +28,12 @@ const handleSwitch = () => {
   isOpen.value = !isOpen.value;
 }
 
-interface IFooterMenuItem {
+defineProps<{
   title:string;
   items?: {
     title: string;
     url: string;
   }[]
-}
-
-defineProps<IFooterMenuItem>();
+}>();
 
 </script>

@@ -16,10 +16,10 @@ class CategoryService extends ApiService {
         return await this.get<ICategoryData>('/catalog/categories/parent', {}, ['children']);
     }
 
-    async getCategory(id: number) {
+    async getCategory(id: string | string[]) {
         return await this.get<{
             data: ICategory
-        }>(`/catalog/categories/${id}/find`, {}, ['children'])
+        }>(`/catalog/categories/${id}/find`, {})
     }
 
 }

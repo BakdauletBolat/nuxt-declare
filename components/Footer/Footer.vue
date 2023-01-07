@@ -132,7 +132,3 @@ const itemsS = [
   }
 ];
 </script>
-
-<style scoped>
-
-</style>

@@ -9,7 +9,7 @@
                 <div class="uppercase text-[#202020]">Сортировка</div>
             </div>
         </div>
-        <div class="text-[#878787]">466 изделий</div>
+        <div class="text-[#878787]">{{ productStore.productsData.meta?.pagination.total }} изделий</div>
     </div>
     <Modal :open="isOpenFilter" @handle-cancel="closeModal" title="Фильтр"></Modal>
     <Modal :open="isOpenSort" @handle-cancel="closeSortModal" title="Сортировка">
@@ -19,10 +19,13 @@
 import FilterIcon from '@/assets/icons/filter.vue';
 import SortIcon from '@/assets/icons/sort.vue';
 import { ref } from 'vue';
+import { useProductStore } from '~~/stores/productStore';
 import Modal from '../UI/Modal.vue';
 
 const isOpenFilter = ref(false);
 const isOpenSort = ref(false);
+
+const productStore = useProductStore();
 
 
 const showModal = () => {
