@@ -1,5 +1,6 @@
 <template>
   <div>
+    <notifications />
     <Header></Header>
     <slot></slot>
     <FooterVue></FooterVue>
@@ -7,9 +8,10 @@
 </template>
 <script lang="ts" setup>
 
-import {onUnmounted, onMounted} from 'vue';
-import {useHeaderStore} from "~/stores/headerStore";
+import { onUnmounted, onMounted } from 'vue';
+import { useHeaderStore } from "~/stores/headerStore";
 import FooterVue from '~~/components/Footer/Footer.vue';
+import Header from '@/components/Header.vue';
 
 const headerStore = useHeaderStore();
 

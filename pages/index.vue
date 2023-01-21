@@ -8,7 +8,6 @@
         <div class="mt-[150px]">Loading</div>
       </template>
     </Suspense>
-    
     <div class="pt-20 pb-16 text-center uppercase text-[22px] md:text-[28px]">
       <div>Специальные цены</div>
     </div>

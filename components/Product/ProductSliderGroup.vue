@@ -40,14 +40,7 @@ const onSlideChange = () => {
           @slideChange="onSlideChange">
 
     <swiper-slide v-for="product in products">
-      <RouterLink class="h-full block" :to="{
-              name: 'product-id',
-              params: {
-                id: product.id
-              }
-            }">
         <ProductCard :product="product"></ProductCard>
-      </RouterLink>
     </swiper-slide>
     <!-- If we need pagination -->
     <div class="swiper-pagination flex pt-7 justify-center"></div>

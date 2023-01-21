@@ -15,16 +15,18 @@
     "nuxt": "3.0.0"
   },
   "dependencies": {
+    "@kyvg/vue3-notification": "^2.8.0",
     "@pinia/nuxt": "^0.4.6",
     "@types/swiper": "^6.0.0",
     "@vueuse/components": "^9.9.0",
     "axios": "^1.2.1",
     "lodash": "^4.17.21",
-    "lottie-web": "^5.10.1",
+    "maska": "^2.1.4",
     "pinia": "^2.0.28",
     "sass": "^1.57.1",
     "swiper": "^8.4.5",
     "tailwind": "^4.0.0",
-    "vue3-lottie": "^2.4.0"
+    "vee-validate": "^4.7.3",
+    "yup": "^0.32.11"
   }
 }
