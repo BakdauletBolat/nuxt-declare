@@ -1,5 +1,5 @@
 export interface JsonApi {
-    id: number;
+    id: any;
     object: string;
     attributes: object;
 }

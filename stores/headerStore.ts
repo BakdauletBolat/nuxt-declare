@@ -13,9 +13,7 @@ export const useHeaderStore = defineStore('header', () => {
     const hide = ref(false);
     const isHide = ref(false);
     const isOpenBurger = ref(false);
-
     const isLoadingCategoriesMenu = ref(false);
-
     const categories = ref<any>([]);
     const currentStep = ref<number>(0);
     const categoriesMenu = ref<{ [key: string]: ICategoryMenu[] } | undefined>(undefined);
@@ -31,7 +29,6 @@ export const useHeaderStore = defineStore('header', () => {
         }
     });
 
-    // const categoriesMenu = computed(() => );
 
     const loadCategories = async ({}: any) => {
         categories.value[0] = (await CategoryService.getCategories()).data;
@@ -46,7 +43,6 @@ export const useHeaderStore = defineStore('header', () => {
         console.log(menu_list, activeCategory.value!.id);
         isLoadingCategoriesMenu.value = false;
     }
-
 
     const nextPage = async (nextPage: number, nextPageChildren: ICategory[], activeCategoryData: ICategory) => {
         categories.value[nextPage] = nextPageChildren;

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import LogoBlack from '@/assets/icons/logo-black.svg';
 import {useHeaderStore} from "~/stores/headerStore";
+import userStore from '~~/stores/userStore';
 
 const headerStore = useHeaderStore();
 

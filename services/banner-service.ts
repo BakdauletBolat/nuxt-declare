@@ -5,7 +5,8 @@ import {IOptions} from "~/models/models";
 class BannerService extends ApiService{
 
     async getBanners({filter, include}:IOptions) {
-        return (await this.get<IBannerData>('/banners',filter, include));
+        console.log('Start');
+        return await this.get<IBannerData>('/banners',filter, include);
     }
 
 }

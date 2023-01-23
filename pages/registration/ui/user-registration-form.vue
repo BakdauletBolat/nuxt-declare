@@ -29,19 +29,23 @@ import authService from '~~/services/auth-service';
 const router = useRouter();
 
 const submit = async (values: any) => {
+
     values['phone'] = phoneTrimmer(values['phone']);
     values['gender'] = 'male';
+
     try {
-        const authData: any = await authService.registerUser(values);
+        await authService.registerUser(values);
         router.push({
-            name: 'verify'
+            name: 'verify-id',
+            params: {
+                id: values['phone']
+            }
         })
     }
     catch (e) {
         console.log(e);
         notify({
-            title: "Что то пошло не так",
-            text: "Попроубуйте заново",
+            title: "Что то пошло не так"
         });
     }
 }

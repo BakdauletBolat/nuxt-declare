@@ -19,16 +19,19 @@
       </div>
       <DesktopMenu></DesktopMenu>
       <div class="flex items-center justify-end">
-        <RouterLink :to="{
-          name: 'authorization'
+        <NuxtLink :to="{
+          name: 'profile'
         }">
           <UserIcon color="black"></UserIcon>
-        </RouterLink>
-        <RouterLink :to="{
+        </NuxtLink>
+        <NuxtLink :to="{
           name: 'favorites'
         }">
           <HeartIcon width="20" height="18" class="ml-[17px]" color="black"></HeartIcon>
-        </RouterLink>
+        </NuxtLink>
+        <div @click="cardStore.openModal()" class="cursor-pointer">
+          <CardIcon width="20" height="18" class="ml-[17px]" color="black"></CardIcon>
+        </div>
       </div>
       <MobileMenu v-if="headerStore.categories[headerStore.currentStep]"></MobileMenu>
     </div>
@@ -42,7 +45,8 @@ import HeartIcon from "assets/icons/heart.vue";
 import UserIcon from "assets/icons/user.vue";
 import MobileMenu from "~/components/Header/MobileMenu.vue";
 import DesktopMenu from "~/components/Header/DesktopMenu.vue";
-
+import CardIcon from "~~/assets/icons/card-icon.vue";
+import cardStore from '@/entities/card/model/store';
 
 const headerStore = useHeaderStore();
 

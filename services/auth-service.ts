@@ -1,5 +1,6 @@
-import { IBannerData } from "~/models/banner";
-import { ApiService } from "~/services/api-service";
+import { IBannerData } from "@/models/banner";
+import { ApiService } from "@/services/api-service";
+import { IUserData } from "@/models/user";
 
 
 class AuthService extends ApiService {
@@ -9,12 +10,17 @@ class AuthService extends ApiService {
     }
 
     async login(data: any) {
-        return await this.get('/login');
+        return await this.post<{
+            access_token: string;
+            refresh_token: string;
+        }>('/login', data);
     }
 
-    
+    async getUser() {
+        return await this.get<IUserData>('/profile')
+    }
 
-    saveTokenToLocalStorage(access:string, refresh:string) {
+    saveTokenToLocalStorage(access: string, refresh: string) {
         localStorage.setItem('token', access);
         localStorage.setItem('refresh', refresh);
     }
@@ -25,17 +31,17 @@ class AuthService extends ApiService {
     }
 
     async registerUser(userData: any) {
-        return await this.post<any>('/register', userData);
+        return await this.post<IUserData>('/register', userData);
     }
 
-    async verifyUser(data:any) {
+    async verifyUser(data: any) {
         try {
             await this.post<{}>('/verify', data);
         }
         catch (e) {
             console.log(e);
         }
-        
+
     }
 
 }

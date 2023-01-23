@@ -1,31 +1,32 @@
 <template>
     <SafeArea>
-        <main class="container mx-auto px-[15px] grid lg:grid-cols-2 gap-[20px]">
-            <section class="mt-[24px] max-w-[500px] mx-auto">
-                <h1 class="text-[21px] text-center">Вход</h1>
-                <p class="mt-[20px] px-[16px] text-center">Если у вас есть учётная запись, пожалуйста, войдите</p>
-                <Form autocomplete="off" class="flex flex-col justify-center mt-[45px] items-center w-full mx-auto"
-                    @submit="submit" :validation-schema="schema" v-slot="{errors, values}">
-                    <InputField :isPhone="true" :errorMessage="errors.phone" placeholder="Телефон*"
-                        :value="values.phone" name="phone" />
-                    <InputField type="password" class="mt-[30px]" :errorMessage="errors.password" placeholder="Пароль*"
-                        :value="values.password" name="password" />
-                    <Button class="mt-[30px]">ВОЙТИ</Button>
-                    <a href="#" class="text-[#525252] mt-[20px] block">Забыли пароль ?</a>
-                </Form>
-
-            </section>
-
-            <section class="mt-[36px] block max-w-[500px] mx-auto">
-                <h1 class="text-[21px] text-center block">РЕГИСТРАЦИЯ</h1>
-                <p class="mt-[20px] px-[16px] text-center block">Создайте свою учётную запись, и вы сможете экономить
-                    время
-                    при оформлении заказа, просматривать свою корзину и сохранённые товары с любого устройства
-                    и получите
-                    доступ к истории заказов</p>
-                <Button @click="router.push('/registration')" class="mt-[40px]">ЗАРЕГИСТРИРОВАТЬСЯ</Button>
-            </section>
-        </main>
+        <GuestRedirect>
+            <main class="container mx-auto px-[15px] grid lg:grid-cols-2 gap-[20px]">
+                <section class="mt-[24px] max-w-[500px] mx-auto">
+                    <h1 class="text-[21px] text-center">Вход</h1>
+                    <p class="mt-[20px] px-[16px] text-center">Если у вас есть учётная запись, пожалуйста, войдите</p>
+                    <Form autocomplete="off" class="flex flex-col justify-center mt-[45px] items-center w-full mx-auto"
+                        @submit="submit" :validation-schema="schema" v-slot="{errors, values}">
+                        <InputField :isPhone="true" :errorMessage="errors.phone" placeholder="Телефон*"
+                            :value="values.phone" name="phone" />
+                        <InputField type="password" class="mt-[30px]" :errorMessage="errors.password"
+                            placeholder="Пароль*" :value="values.password" name="password" />
+                        <Button class="mt-[30px]">ВОЙТИ</Button>
+                        <a href="#" class="text-[#525252] mt-[20px] block">Забыли пароль ?</a>
+                    </Form>
+                </section>
+                <section class="mt-[36px] block max-w-[500px] mx-auto">
+                    <h1 class="text-[21px] text-center block">РЕГИСТРАЦИЯ</h1>
+                    <p class="mt-[20px] px-[16px] text-center block">Создайте свою учётную запись, и вы сможете
+                        экономить
+                        время
+                        при оформлении заказа, просматривать свою корзину и сохранённые товары с любого устройства
+                        и получите
+                        доступ к истории заказов</p>
+                    <Button @click="router.push('/registration')" class="mt-[40px]">ЗАРЕГИСТРИРОВАТЬСЯ</Button>
+                </section>
+            </main>
+        </GuestRedirect>
     </SafeArea>
 </template>
 <script lang="ts" setup>
@@ -34,7 +35,9 @@ import * as yup from 'yup';
 import InputField from '@/components/UI/InputField.vue';
 import Button from '@/components/UI/Button.vue';
 import { useRouter } from 'vue-router';
-import {phoneTrimmer} from '@/utils/phoneTrimmer';
+import { phoneTrimmer } from '@/utils/phoneTrimmer';
+import authService from '~~/services/auth-service';
+import userStore from '~~/stores/userStore';
 
 const router = useRouter();
 
@@ -44,10 +47,19 @@ const schema = yup.object({
 });
 
 
-const submit = (values: any) => {
+const submit = async (values: any) => {
     values.phone = phoneTrimmer(values.phone);
-    console.log('hello', values);
+    const data = await authService.login(values);
+    authService.saveTokenToLocalStorage(data.access_token, data.refresh_token);
+    await userStore.loadUser();
+    router.push({
+        name: 'profile'
+    });
 }
+
+definePageMeta({
+    middleware: 'guest'
+});
 
 </script>
 <style lang="scss">

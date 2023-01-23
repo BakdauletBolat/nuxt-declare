@@ -9,13 +9,10 @@ export class ApiService {
     )
 
     constructor() {
-
         this.axiosAPI.interceptors.request.use(function (config) {
             const token = localStorage.getItem('token');
             if (token != undefined) {
                 config.headers!.Authorization = 'Bearer ' + token;
-            } else {
-                config.headers!.Authorization = 'Bearer' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTAuMTAuMS45MDo4MS9hcGkvdjEvbG9naW4iLCJpYXQiOjE2NzE0Mzk1ODQsImV4cCI6MTY3NjYyMzU4NCwibmJmIjoxNjcxNDM5NTg0LCJqdGkiOiJmOElydG5TNFpOV25hUUJ5Iiwic3ViIjoiMyIsInBydiI6IjA0MzM5ZmQ2MzE1ZjU1MjEyMzlhN2FkMDNmYTI1YWFhNzU1ZDQ3MDYiLCJpZCI6MywiZW1haWwiOiJiYWtvc2gyMTM0NUBnbWFpbC5jb20ifQ.bpZAy5i5uWb6zPnZUkKr81rfgrPpE-l6Yj7-SYPmHyk'
             }
             return config;
         });
@@ -52,3 +49,5 @@ export class ApiService {
         return (await this.axiosAPI.patch<T>(url, data = data)).data
     }
 }
+
+

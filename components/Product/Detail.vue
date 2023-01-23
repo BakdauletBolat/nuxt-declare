@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h1 class="text-xl font-medium ">{{product.attributes.title}}</h1>
-    <div class="lg:mt-[28px] mt-[24px] text-base text-[#878787] font-normal">Артикул: {{product.attributes.article}}</div>
+    <h1 class="text-xl font-medium ">{{ product.attributes.title }}</h1>
+    <div class="lg:mt-[28px] mt-[24px] text-base text-[#878787] font-normal">Артикул: {{ product.attributes.article }}
+    </div>
     <div class="lg:mt-[28px] mt-[24px] text-lg flex gap-[12px] items-center text-[#202020]">
-      {{product.attributes.price}} ₸
-      <span class="text-base text-[#878787] line-through">{{product.attributes.old_price}} ₸</span>
+      {{ product.attributes.price }} ₸
+      <span class="text-base text-[#878787] line-through">{{ product.attributes.old_price }} ₸</span>
     </div>
     <InfoText class="lg:mt-[28px] mt-[24px] text-base">В рассрочку от 5 990 ₸/мес
       <template v-slot:info-text>
@@ -18,7 +19,7 @@
     </InfoText>
     <GroupButton class="mt-[48px]" :activeId="activeId" @onChange="selectSize"></GroupButton>
     <p class="uppercase text-base mt-[28px] text-[#27213DB2]">РУКОВОДСТВО ПО РАЗМЕРАМ</p>
-    <Button class="lg:mt-[48px] mt-[32px]">ДОБАВИТЬ В КОРЗИНУ</Button>
+    <Button class="lg:mt-[48px] mt-[32px]" @click="addToCard">ДОБАВИТЬ В КОРЗИНУ</Button>
     <Button class="mt-[9px]" typeButton="secondary">КУПИТЬ В 1 КЛИК <span><img :src="RightArrow" alt=""></span></Button>
     <Accordion>
       <template v-slot:title>ДОСТАВКА И ОПЛАТА</template>
@@ -55,17 +56,33 @@
   </div>
 </template>
 <script setup lang="ts">
-import {ref} from 'vue';
+import { ref } from 'vue';
 import InfoText from "~/components/UI/InfoText.vue";
 import GroupButton from "~/components/UI/GroupButton.vue";
 import Button from "~/components/UI/Button.vue";
 import RightArrow from '@/assets/icons/right-arrow.svg';
 import Accordion from "~/components/UI/Accordion.vue";
 import { IProduct } from '~~/models/product';
+import cardStore from '@/entities/card/model/store';
+import { v4 as uuidv4 } from 'uuid';
 
-defineProps<{
+const props = defineProps<{
   product: IProduct
 }>()
+
+
+const addToCard = () => {
+  cardStore.openModal();
+  cardStore.addCardItem({
+    id: uuidv4(),
+    object: 'Card',
+    attributes: {
+      product_id: props.product.id as number,
+      quantity: 1,
+      product: props.product
+    }
+  });
+}
 
 const activeId = ref(1);
 
