@@ -5,9 +5,13 @@
                 class=" outer w-full fixed top-0 right-0 h-screen cursor-pointer bg-[rgba(0,0,0,0.5)] z-[100]">
             </div>
             <div
-                class="inner w-full fixed top-0 right-0 h-screen bg-white z-[100] lg:w-[400px]  p-[20px] overflow-scroll">
+                class="inner w-full fixed top-0 right-0 h-screen bg-white z-[100] lg:w-[494px]  p-[20px] overflow-scroll">
                 <div class="h-16 flex justify-between items-center relative mx-auto container]">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 uppercase">{{ title }}</div>
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 uppercase">
+                      <slot name="title">
+                        {{title}}
+                      </slot>
+                    </div>
                     <img @click="emit('handleCancel')" class="cursor-pointer absolute top-0 right-0" :src="ExitIcon"
                         alt="" />
                 </div>

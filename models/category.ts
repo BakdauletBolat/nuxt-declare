@@ -1,4 +1,4 @@
-import { JsonApi } from "~/models/models";
+import {IPicture, JsonApi} from "~/models/models";
 
 export interface ICategoryMenu extends JsonApi {
     attributes: {
@@ -15,6 +15,9 @@ export interface ICategory extends JsonApi {
     attributes: {
         name: string;
         slug: string;
+    }
+    picture: {
+        data: IPicture
     }
     children: {
         data: ICategory[]

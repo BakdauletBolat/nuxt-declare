@@ -11,7 +11,7 @@
                 <Heart width="26" height="24" :color="isLiked ? 'red' : '#27213D80'"></Heart>
             </div>
         </div>
-        <RouterLink :to="{
+        <NuxtLink :to="{
             name: 'product-id',
             params: {
                 id: product.id
@@ -21,17 +21,17 @@
                 <img class="w-[124px] h-[124px] lg:w-[232px] lg:h-[232px] object-contain"
                     :src="product.picture.data.attributes.url" alt="">
             </div>
-        </RouterLink>
+        </NuxtLink>
 
         <div class="product-footer text-sm md:text-base lg:pt-[24px] pt-[20px] lg:pb-[96px] pb-[66px]">
-            <RouterLink :to="{
+            <NuxtLink :to="{
                 name: 'product-id',
                 params: {
                     id: product.id
                 }
             }">
                 <h3 class="text-center">{{ product.attributes.title }}</h3>
-            </RouterLink>
+            </NuxtLink>
             <div class="flex justify-center pt-4 md:text-lg">
                 <div class="text-[#636363] pr-3 line-through">{{ product.attributes.price }} ₸</div>
                 <div>{{ product.attributes.old_price }} ₸</div>

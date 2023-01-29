@@ -13,13 +13,13 @@ class CategoryService extends ApiService {
     }
 
     async getCategories() {
-        return await this.get<ICategoryData>('/catalog/categories/parent', {}, ['children']);
+        return await this.get<ICategoryData>('/catalog/categories/parent', {}, ['children','picture']);
     }
 
     async getCategory(id: string | string[]) {
         return await this.get<{
             data: ICategory
-        }>(`/catalog/categories/${id}/find`, {})
+        }>(`/catalog/categories/${id}/view/`, {})
     }
 
 }

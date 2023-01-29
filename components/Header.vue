@@ -7,6 +7,7 @@
     <div class="container mx-auto
                 items-center lg:justify-between
                 lg:h-[100px] h-[64px]
+                w-full
                 grid-cols-3
                 grid lg:flex">
       <div class="flex lg:hidden
@@ -20,7 +21,7 @@
       <DesktopMenu></DesktopMenu>
       <div class="flex items-center justify-end">
         <NuxtLink :to="{
-          name: 'profile'
+          name: userRoute
         }">
           <UserIcon color="black"></UserIcon>
         </NuxtLink>
@@ -38,8 +39,8 @@
   </header>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
-import { useHeaderStore } from "~/stores/headerStore";
+import {onMounted} from "vue";
+import {useHeaderStore} from "~/stores/headerStore";
 import SearchIcon from 'assets/icons/search.vue';
 import HeartIcon from "assets/icons/heart.vue";
 import UserIcon from "assets/icons/user.vue";
@@ -50,30 +51,15 @@ import cardStore from '@/entities/card/model/store';
 
 const headerStore = useHeaderStore();
 
+
+const userRoute = computed(() => {
+  if (process.client) {
+    return window.innerWidth < 1024 ? 'profile' : 'profile-user-information';
+  }
+  return 'profile';
+})
+
 onMounted(() => {
   headerStore.loadCategories({});
 });
-
-const language = ref({
-  value: 'RU',
-  title: 'РУ'
-});
-const options = [
-  {
-    value: 'RU',
-    title: 'РУ'
-  },
-  {
-    value: 'KAZ',
-    title: 'ҚАЗ'
-  },
-  {
-    value: 'ENG',
-    title: 'АНГ'
-  }
-]
-
-const onChange = (value: any) => {
-  language.value = value;
-}
 </script>

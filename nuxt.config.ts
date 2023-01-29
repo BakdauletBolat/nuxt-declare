@@ -6,11 +6,15 @@ export default defineNuxtConfig({
         '@pinia/nuxt',],
     plugins: [
         '@/plugins/vuetify'
-    ]  ,
+    ],
+    css: ['@/assets/main.css'],
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {},
+        },
+    },
     build: {
         transpile: ['vuetify'],
-    },
-    css: [
-        '@/assets/main.css',
-    ]
+    }
 })

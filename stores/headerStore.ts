@@ -40,7 +40,6 @@ export const useHeaderStore = defineStore('header', () => {
         categoriesMenu.value = lodash.groupBy(menu_list, (menu: ICategoryMenu) => {
             return menu.attributes.type;
         });
-        console.log(menu_list, activeCategory.value!.id);
         isLoadingCategoriesMenu.value = false;
     }
 

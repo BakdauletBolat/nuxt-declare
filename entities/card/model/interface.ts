@@ -7,8 +7,15 @@ export interface ICardItem extends JsonApi {
         quantity: number;
         product?: IProduct;
     }
+    product: {
+        data: IProduct
+    }
 }
 
 export interface ICard extends JsonApi {
-    items: ICardItem[]
+    attributes: {
+        price?: number;
+        old_price?: number;
+        items: ICardItem[]
+    }
 }

@@ -1,64 +1,83 @@
 <template>
-    <Form autocomplete="off" class="flex flex-col justify-center mt-[45px] items-center" @submit="submit"
-        :validation-schema="schema" v-slot="{errors, values}">
-        <InputField :errorMessage="errors.first_name" placeholder="Имя*" :value="values.first_name" name="first_name" />
-        <InputField class="mt-[30px]" :errorMessage="errors.last_name" placeholder="Фамилия*" :value="values.last_name"
-            name="last_name" />
-        <InputField class="mt-[30px]" :isPhone="true" :errorMessage="errors.phone" placeholder="Телефон*"
-            :value="values.phone" name="phone" />
-        <InputField class="mt-[30px]" :errorMessage="errors.email" placeholder="Электронная почта*"
-            :value="values.email" name="email" />
-        <InputField type="password" class="mt-[30px]" :errorMessage="errors.password" placeholder="Пароль*"
-            :value="values.password" name="password" />
-        <InputField type="password" class="mt-[30px]" :errorMessage="errors.confirm_password"
-            placeholder="Подверждение пароля*" :value="values.confirm_password" name="confirm_password" />
-        <InputField type="date" class="mt-[30px]" :errorMessage="errors.birthday" placeholder="Дата*"
-            :value="values.birthday ?? '2022.22.12'" name="birthday" />
-        <Button class="mt-[30px]">Войти</Button>
-    </Form>
+  <div class="flex flex-col justify-center mt-[45px] items-center">
+    <InputField :errorMessage="registrationStore.submitCount > 0 ? registrationStore.errors.first_name : ''"
+                placeholder="Имя*"
+                :value="registrationStore.first_name"
+                @update:value="newValue=>registrationStore.first_name=newValue"
+                name="first_name"/>
+    <InputField :errorMessage="registrationStore.submitCount > 0 ? registrationStore.errors.last_name : ''"
+                placeholder="Фамилия*"
+                :value="registrationStore.last_name"
+                @update:value="newValue=>registrationStore.last_name=newValue"
+                name="last_name"
+                class="mt-[30px]"/>
+    <InputField :errorMessage="registrationStore.submitCount > 0 ? registrationStore.errors.phone : ''"
+                placeholder="Телефон*"
+                @update:value="newValue=>registrationStore.phone=newValue"
+                :value="registrationStore.phone" name="phone"
+                class="mt-[30px]"
+                :isPhone="true"/>
+    <InputField :errorMessage="registrationStore.submitCount > 0 ? registrationStore.errors.email : ''"
+                placeholder="Электронная почта*"
+                @update:value="newValue=>registrationStore.email=newValue"
+                :value="registrationStore.email"
+                name="email"
+                class="mt-[30px]"/>
+    <InputField :errorMessage="registrationStore.submitCount > 0 ? registrationStore.errors.password : ''"
+                placeholder="Пароль*"
+                @update:value="newValue=>registrationStore.password=newValue"
+                :value="registrationStore.password"
+                name="password"
+                type="password"
+                class="mt-[30px]"/>
+    <InputField :errorMessage="registrationStore.submitCount > 0 ? registrationStore.errors.confirm_password : ''"
+                placeholder="Подтверждение пароля*"
+                @update:value="newValue=>registrationStore.confirm_password=newValue"
+                :value="registrationStore.confirm_password"
+                name="confirm_password"
+                type="password"
+                class="mt-[30px]"/>
+    <InputField :errorMessage="registrationStore.submitCount > 0 ? registrationStore.errors.birthday : ''"
+                placeholder="Дата*"
+                @update:value="newValue=>registrationStore.birthday=newValue"
+                :value="registrationStore.birthday ?? '2022.22.12'"
+                name="birthday"
+                type="date"
+                class="mt-[30px]"/>
+    <Button :is-loading="registrationStore.isLoading" @click="submit" class="mt-[30px]">Войти</Button>
+  </div>
 </template>
 <script lang="ts" setup>
-import { Form } from 'vee-validate';
-import * as yup from 'yup';
 import InputField from '@/components/UI/InputField.vue';
 import Button from '@/components/UI/Button.vue';
-import { notify } from "@kyvg/vue3-notification";
-import authService from '~~/services/auth-service';
+import registrationStore from '../store';
+import {useRouter} from "vue-router";
+import {notify} from "@kyvg/vue3-notification";
 
 
 const router = useRouter();
-
-const submit = async (values: any) => {
-
-    values['phone'] = phoneTrimmer(values['phone']);
-    values['gender'] = 'male';
-
+const submit = async () => {
+  const bool = await registrationStore.submit();
+  const phone = phoneTrimmer(registrationStore.phone);
+  if (bool == true) {
+    console.log(bool, phone);
     try {
-        await authService.registerUser(values);
-        router.push({
-            name: 'verify-id',
-            params: {
-                id: values['phone']
-            }
-        })
+      await router.push({
+        name: 'verify-id',
+        params: {
+          id: phone
+        }
+      })
+      registrationStore.$reset();
+    } catch (e) {
+      console.log(e);
     }
-    catch (e) {
-        console.log(e);
-        notify({
-            title: "Что то пошло не так"
-        });
-    }
+
+  } else {
+    notify({
+      title: 'Введите правильные данные'
+    })
+  }
 }
-
-const schema = yup.object({
-    first_name: yup.string().required("Обязательная поля"),
-    last_name: yup.string().required("Обязательная поля"),
-    phone: yup.string().required("Обязательная поля"),
-    email: yup.string().required("Обязательная поля").email('Правильно введите почту'),
-    password: yup.string().required("Обязательная поля"),
-    confirm_password: yup.string().oneOf([yup.ref('password'), null], 'Не совпадает пароль'),
-    birthday: yup.date().required('Date')
-});
-
 
 </script>

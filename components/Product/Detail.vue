@@ -19,8 +19,12 @@
     </InfoText>
     <GroupButton class="mt-[48px]" :activeId="activeId" @onChange="selectSize"></GroupButton>
     <p class="uppercase text-base mt-[28px] text-[#27213DB2]">РУКОВОДСТВО ПО РАЗМЕРАМ</p>
-    <Button class="lg:mt-[48px] mt-[32px]" @click="addToCard">ДОБАВИТЬ В КОРЗИНУ</Button>
-    <Button class="mt-[9px]" typeButton="secondary">КУПИТЬ В 1 КЛИК <span><img :src="RightArrow" alt=""></span></Button>
+    <Button :is-loading="isLoading"
+            class="lg:mt-[48px] mt-[32px] uppercase"
+            :type-button="isInCard ? 'bordered': 'primary'"
+            @click="addToCard">{{ isInCard ? 'В корзину' : 'ДОБАВИТЬ В КОРЗИНУ' }}
+    </Button>
+    <Button  class="mt-[9px]" typeButton="secondary">КУПИТЬ В 1 КЛИК <span><img :src="RightArrow" alt=""></span></Button>
     <Accordion>
       <template v-slot:title>ДОСТАВКА И ОПЛАТА</template>
       <template v-slot:body>
@@ -51,37 +55,57 @@
         Доставка по Казахстану до 5-и рабочих дней
       </template>
     </Accordion>
-
-
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import {ref} from 'vue';
 import InfoText from "~/components/UI/InfoText.vue";
 import GroupButton from "~/components/UI/GroupButton.vue";
 import Button from "~/components/UI/Button.vue";
 import RightArrow from '@/assets/icons/right-arrow.svg';
 import Accordion from "~/components/UI/Accordion.vue";
-import { IProduct } from '~~/models/product';
+import {IProduct} from '~~/models/product';
 import cardStore from '@/entities/card/model/store';
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 const props = defineProps<{
   product: IProduct
-}>()
+}>();
+
+const isLoading = ref<boolean>(false);
 
 
-const addToCard = () => {
-  cardStore.openModal();
-  cardStore.addCardItem({
-    id: uuidv4(),
-    object: 'Card',
-    attributes: {
-      product_id: props.product.id as number,
-      quantity: 1,
-      product: props.product
+const isInCard = computed(() => {
+  const index = cardStore.card?.attributes.items.findIndex(cardItem => cardItem.product.data.id == props.product.id);
+  return index != undefined && index! != -1;
+});
+
+const addToCard = async () => {
+  if (!isInCard.value) {
+    isLoading.value = true;
+    try {
+        await cardStore.addCardItem({
+      id: uuidv4(),
+      object: 'Card',
+      attributes: {
+        product_id: props.product.id as number,
+        quantity: 1
+      },
+      product: {
+        data: props.product
+      }
+    });
     }
-  });
+    catch (e) {
+      console.log(e)
+    }
+    finally {
+      isLoading.value = false;
+    }
+
+  }
+
+  cardStore.openModal();
 }
 
 const activeId = ref(1);

@@ -6,19 +6,19 @@
           >
         {{ category.attributes.name }}
       </div>
+    </div>  
+  </div>
+  <div @click="closeMenu" class="left-0 w-screen top-[101px] absolute h-screen bg-[rgba(0,0,0,0.5)]"  v-if="headerStore.currentStep > 0">
     </div>
-    <div @click="closeMenu" class="left-0 w-screen top-[101px] absolute h-screen bg-[rgba(0,0,0,0.5)]"  v-if="headerStore.currentStep > 0">
-    </div>
-    <div class="z-[100] absolute bg-white h-[560px] top-[101px] w-screen left-0" v-if="headerStore.currentStep > 0">
+    <div class="z-[100] hidden lg:block absolute bg-white h-[560px] top-[101px] w-screen left-0" v-if="headerStore.currentStep > 0">
       <div class="container gap-[60px] mx-auto flex">
+        <div @click="closeMenu" class="absolute cursor-pointer right-[15px] top-[20px]"><img src="@/assets/icons/exit.svg" alt=""></div>
         <div class="w-[240px] border-r my-[20px]">
           <Recurcive :depth="1" :items="headerStore.categories[headerStore.currentStep]"></Recurcive>
         </div>
         <CategoryMenu class="my-[20px]"></CategoryMenu>
       </div>
     </div>
-    
-  </div>
 </template>
 <script lang="ts" setup>
 import {useHeaderStore} from "@/stores/headerStore";

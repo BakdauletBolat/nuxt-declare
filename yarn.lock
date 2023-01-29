@@ -302,6 +302,21 @@
   dependencies:
     mime "^3.0.0"
 
+"@csstools/cascade-layer-name-parser@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@csstools/cascade-layer-name-parser/-/cascade-layer-name-parser-1.0.0.tgz#cc899fbfd2206a1b8f0a939b14ed8d42643d1758"
+  integrity sha512-JxdLxJMDximX1vxCFJdwC7MD4aXNSFbOxBZuYKg2FEz4MLR0UFVmamPtzthzqzxAcU0K6ShvEFfMBrEEb16U+A==
+
+"@csstools/css-parser-algorithms@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@csstools/css-parser-algorithms/-/css-parser-algorithms-2.0.0.tgz#2f27a1f2aef94f5d009d3d83f08f1e095dff2b30"
+  integrity sha512-RbukP8OjQvuH85veuzOq8abPjsvqvleZaQC6W0GJFGpwLUh8XmFMQjvtuIM9bQ589YFx4lwwAcSwN4nfcvxIEw==
+
+"@csstools/css-tokenizer@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@csstools/css-tokenizer/-/css-tokenizer-2.0.0.tgz#fa2a7e8f4ed965e73ba30ee80c00fa64980fd11e"
+  integrity sha512-IB6EFP0Hc/YEz1sJVD47oFqJP6TXMB+OW1jXSYnOk5g+6wpk2/zkuBa0gm5edIMM9nVUZ3hF0xCBnyFbK5OIyg==
+
 "@csstools/selector-specificity@^2.0.0":
   version "2.0.2"
   resolved "https://registry.npmjs.org/@csstools/selector-specificity/-/selector-specificity-2.0.2.tgz"
@@ -1337,7 +1352,7 @@ at-least-node@^1.0.0:
 
 autoprefixer@^10.2.5, autoprefixer@^10.4.12, autoprefixer@^10.4.13:
   version "10.4.13"
-  resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.13.tgz"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.13.tgz#b5136b59930209a321e9fa3dca2e7c4d223e83a8"
   integrity sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==
   dependencies:
     browserslist "^4.21.4"
@@ -4140,6 +4155,11 @@ ms@2.1.3, ms@^2.1.1:
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
+multi-range-slider-vue@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/multi-range-slider-vue/-/multi-range-slider-vue-1.1.4.tgz#0dffc597cfe663e16f42b08bd51e2761d1aa7d71"
+  integrity sha512-QnYl/59+kWTer5aMY039CigSVbSiIy5gDBnAX/0O0IZIY5az9nWL7tJv5dP77fzeDxiWsTWzsVUW8fGDcC8mEg==
+
 mute-stream@0.0.8:
   version "0.0.8"
   resolved "https://registry.npmjs.org/mute-stream/-/mute-stream-0.0.8.tgz"
@@ -4709,6 +4729,16 @@ postcss-custom-properties@^12.1.9:
   dependencies:
     postcss-value-parser "^4.2.0"
 
+postcss-custom-properties@^13.1.0:
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-13.1.0.tgz#b6f0ae00381f636932b8ce35ac77b406659dedb8"
+  integrity sha512-O0Lg0CuHwADctEMBgGtaeams7eFES8pXo/9zBClTbRVdU3LFAkFluw1l9eYnJ3rtidp80EGbAIuiisEIu1Z+uA==
+  dependencies:
+    "@csstools/cascade-layer-name-parser" "^1.0.0"
+    "@csstools/css-parser-algorithms" "^2.0.0"
+    "@csstools/css-tokenizer" "^2.0.0"
+    postcss-value-parser "^4.2.0"
+
 postcss-discard-comments@^5.1.2:
   version "5.1.2"
   resolved "https://registry.npmjs.org/postcss-discard-comments/-/postcss-discard-comments-5.1.2.tgz"
@@ -5010,6 +5040,15 @@ postcss@^8.1.10, postcss@^8.2.15, postcss@^8.4.18, postcss@^8.4.19, postcss@^8.4
   version "8.4.20"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.4.20.tgz"
   integrity sha512-6Q04AXR1212bXr5fh03u8aAwbLxAQNGQ/Q1LNa0VfOI06ZAlhPHtQvE4OIdpj4kLThXilalPnmDSOD65DcHt+g==
+  dependencies:
+    nanoid "^3.3.4"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
+
+postcss@^8.4.21:
+  version "8.4.21"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.21.tgz#c639b719a57efc3187b13a1d765675485f4134f4"
+  integrity sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg==
   dependencies:
     nanoid "^3.3.4"
     picocolors "^1.0.0"
@@ -5802,9 +5841,9 @@ tailwind@^4.0.0:
     uuidv4 "3.0.1"
     ws "6.2.0"
 
-tailwindcss@^3.2.0:
+tailwindcss@^3.2.0, tailwindcss@^3.2.4:
   version "3.2.4"
-  resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.2.4.tgz"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.2.4.tgz#afe3477e7a19f3ceafb48e4b083e292ce0dc0250"
   integrity sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ==
   dependencies:
     arg "^5.0.2"

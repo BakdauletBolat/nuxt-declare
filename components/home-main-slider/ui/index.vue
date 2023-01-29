@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import HomeMainSliderItemVue from './HomeMainSliderItem.vue';
-import HomeMainSliderSkeleton from './HomeMainSliderSkeleton.vue';
+import HomeMainSliderItemVue from './home-main-slider-item.vue';
+import HomeMainSliderSkeleton from './home-main-slider-skeleton.vue';
 import { Pagination } from 'swiper';
 import bannerService from '~~/services/banner-service';
 import { IBannerData } from '../model/interface';
@@ -23,7 +23,7 @@ const pagination = {
 }
 </script>
 <template>
-    <SafeArea class="relative">
+    <SafeArea>
     <HomeMainSliderSkeleton v-if="isLoading"></HomeMainSliderSkeleton>
     <swiper v-else class="h-[588px]" :modules="modules" :pagination="pagination" :slides-per-view="1">
         

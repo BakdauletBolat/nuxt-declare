@@ -7,17 +7,19 @@
             {{ props.item.title }}
           </p>
           <button class="close" @click="props.close">
-            <img src="@/assets/icons/exit.svg" />
+            <img src="@/assets/icons/exit.svg"/>
           </button>
         </div>
       </template>
     </notifications>
 
     <Header></Header>
-    <Modal :style="{
-      zIndex: '1000'
-    }" :open="cardStore.isOpenModal" @handle-cancel="cardStore.closeModal">
+    <Modal :style="{zIndex: '1000'}"
+           title="Корзина"
+           :open="cardStore.isOpenModal"
+           @handle-cancel="cardStore.closeModal">
       <CardModal></CardModal>
+
     </Modal>
     <slot></slot>
     <MailingForm></MailingForm>
@@ -26,27 +28,36 @@
 </template>
 <script lang="ts" setup>
 
-import { onUnmounted, onMounted } from 'vue';
-import { useHeaderStore } from "~/stores/headerStore";
+import {onUnmounted, onMounted} from 'vue';
+import {useHeaderStore} from "~/stores/headerStore";
 import FooterVue from '~~/components/Footer/Footer.vue';
 import Header from '@/components/Header.vue';
 import MailingForm from '~~/components/UI/MailingForm.vue';
 import userStore from '@/stores/userStore';
 import cardStore from '@/entities/card/model/store';
 import Modal from '~~/components/UI/Modal.vue';
-import CardModal from '@/widgets/CardModal/ui.vue';
+import CardModal from '@/widgets/card-modal/ui.vue';
+import {useLocalStorage} from "#imports";
+
 const headerStore = useHeaderStore();
 const handleScroll = () => {
   headerStore.useScrollActive();
 }
 
-onMounted(async () => {
-  if (localStorage.getItem('token')) {
-    await userStore.loadUser();
+const loadStartUpData = async () => {
+  const token = await useLocalStorage('token', undefined).value
+  if (token != 'undefined') {
+    try {
+      await userStore.loadUser();
+    } catch (e) {
+      console.log(e);
+    }
   }
+  await cardStore.loadCard();
+}
 
-  cardStore.loadCard();
-
+onMounted(() => {
+  loadStartUpData();
   window.addEventListener('scroll', handleScroll);
 });
 

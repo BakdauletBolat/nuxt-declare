@@ -1,14 +1,16 @@
-import { defineStore } from "pinia";
-import { ICard, ICardItem } from "./interface";
+import {defineStore} from "pinia";
+import {ICard, ICardItem} from "./interface";
 import userStore from '@/stores/userStore';
 import CardApiLocal from '../api/local';
-const useCardStore = defineStore('card-store', ()=>{
+import CardApiServer from '../api/server';
 
-    const apiService = computed(()=>{
+const useCardStore = defineStore('card-store', () => {
+
+    const apiService = computed<typeof CardApiLocal | typeof CardApiServer>(() => {
         if (userStore.user === null) {
             return CardApiLocal;
         }
-        return;
+        return CardApiServer;
     })
 
     const card = ref<ICard | undefined>(undefined);
@@ -16,32 +18,79 @@ const useCardStore = defineStore('card-store', ()=>{
     const isOpenModal = ref<boolean>(false);
 
 
-    const openModal = () => { isOpenModal.value = true };
+    const openModal = () => {
+        isOpenModal.value = true
+    };
     const closeModal = () => isOpenModal.value = false;
 
-    const loadCard = () => {
-        card.value = apiService.value?.getCard();
+
+
+    const loadCard = async () => {
+        const data = await apiService.value?.getCard();
+        card.value = data;
+        const price = await apiService.value.getCost();
+        card.value.attributes.price = price;
+
     }
 
-    const changeQuantity = (id:number, value: string) => {
-        apiService.value?.changeQuantity(id,parseInt(value));
+    const loadMoreCard = async (page: number) => {
+
+        const data = await apiService.value?.getCard(page);
+        if (data.attributes.items.length == 0) {
+            return true;
+        }
+        card.value?.attributes.items.push(...data.attributes.items);
+
+
+        return false;
     }
 
-    const addCardItem =  async (itemProp: ICardItem) => {
-        apiService.value?.addCardItem(itemProp);
-        loadCard(); 
+    const changeQuantity = async (id: number, value: string) => {
+        if (value == '' || value == undefined) return;
+        try {
+            const cardItem: ICardItem | undefined = await apiService.value?.changeQuantity(id, parseInt(value));
+            const index = card.value?.attributes.items.findIndex(item => cardItem?.id == item.id);
+            if (index != -1 && index != undefined) {
+                card.value!.attributes.items[index] = cardItem!;
+            }
+            card.value!.attributes.price = await apiService.value.getCost();
+        } catch (e) {
+            console.log(e);
+        }
+
     }
 
-    const removeCardItem =  async (id: number) => {
-        apiService.value?.removeCardItem(id);
-        loadCard(); 
+    const addCardItem = async (itemProp: ICardItem) => {
+        try {
+            const cardItem: ICardItem | null = await apiService.value?.addCardItem(itemProp);
+            card.value?.attributes.items.push(cardItem!);
+            card.value!.attributes.price = await apiService.value.getCost();
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+    const removeCardItem = async (id: number) => {
+        try {
+            apiService.value?.removeCardItem(id);
+            const index = card.value?.attributes.items.findIndex(item => item.id == id);
+            if (index != -1 && index != undefined) {
+                card.value!.attributes.items.splice(index, 1);
+            }
+            card.value!.attributes.price = await apiService.value.getCost();
+        } catch (e) {
+            console.log(e);
+        }
+
     }
 
     return {
         card,
+        isOpenModal,
+        loadMoreCard,
         addCardItem,
         removeCardItem,
-        isOpenModal,
         closeModal,
         openModal,
         loadCard,

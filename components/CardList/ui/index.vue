@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
 import CardItem from '@/entities/card/ui/CardItem.vue';
-import { ICardItem } from '~~/entities/card/model/interface';
+import { ICardItem } from '@/entities/card/model/interface';
 
 defineProps<{
     items: ICardItem[] | undefined

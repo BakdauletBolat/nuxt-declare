@@ -53,7 +53,6 @@
 <template>
   <SafeArea>
     <Breadcrumb back-link="/" backTitle="Обратно к списку" :options="options"></Breadcrumb>
-
         <div class="container mx-auto px-4" v-if="product">
           <div class="page flex xl:gap-[60px] lg:gap-[40px] lg:flex-row flex-col gap-[28px]">
             <div class="flex xl:gap-[70px] lg:gap-[40px]">
@@ -63,7 +62,7 @@
                     src="@/assets/icons/arrow-top.svg" />
                 </div>
                 <swiper @swiper="setThumbsSwiper" :spaceBetween="10" :slidesPerView="1" :allow-slide-next="true"
-                  :allow-slide-prev="true" navigation :breakpoints="{
+                  :allow-slide-prev="true" :breakpoints="{
                     1024: {
                       slidesPerView: 3
                     },
@@ -85,12 +84,12 @@
                   <swiper-slide v-for="image in product?.pictures.data"><img class="object-contain"
                       :src="image.attributes.url" /></swiper-slide>
                   <div
-                    class="swiper-pagination absolute z-[100] bottom-0 left-1/2 -translate-x-1/2 flex justify-center">
+                    class="swiper-pagination absolute z-[100] bottom-0 left-1/2! -translate-x-1/2! flex justify-center">
                   </div>
                 </swiper>
               </div>
             </div>
-            <ProductDetail class="w-full" :product="product!"></ProductDetail>
+            <ProductDetail class="w-full" :product="product"></ProductDetail>
           </div>
           <div class="grid grid-cols-1 lg:gap-[40px] lg:grid-cols-2 gap-[28px] mt-[36px]">
             <div class="product-desc">

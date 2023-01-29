@@ -37,10 +37,11 @@
 </style>
 <script lang="ts" setup>
 import FooterMenuItem from "@/components/Footer/FooterMenuItem.vue";
-import InstagramIcon from 'assets/icons/instagram.vue';
-import TwitterIcon from 'assets/icons/twitter.vue';
-import PhoneIcon from 'assets/icons/phone.vue';
-import MailIcon from 'assets/icons/mail.vue';
+import InstagramIcon from '@/assets/icons/instagram.vue';
+import TwitterIcon from '@/assets/icons/twitter.vue';
+import PhoneIcon from '@/assets/icons/phone.vue';
+import MailIcon from '@/assets/icons/mail.vue';
+
 const itemsDeclare = [
   {
     title: 'О компании',
