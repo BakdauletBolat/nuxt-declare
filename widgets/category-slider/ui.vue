@@ -1,5 +1,5 @@
 <template>
-  <CategorySlideList :items="CategoryStore.categories">
+  <CategorySlideList v-if="CategoryStore.categories" :items="CategoryStore.categories">
   </CategorySlideList>
 </template>
 <script setup lang="ts">

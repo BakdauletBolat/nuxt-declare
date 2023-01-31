@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-[30px]">
+    <div v-if="items" class="flex flex-col gap-[30px]">
         <CardItem v-for="item in items" :cardItem="item"></CardItem>
     </div>
 </template>

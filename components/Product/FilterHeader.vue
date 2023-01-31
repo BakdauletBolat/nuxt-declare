@@ -86,7 +86,7 @@
         {{ key }}
       </template>
       <template #body>
-        <RadioButton @click="productStore.setActiveFilterItem(item.id, key)" v-for="item in items"
+        <RadioButton @click="productStore.setActiveFilterItem(item.id, key)" v-if="items" v-for="item in items"
                      :title="item.attributes.name"
                      :value="item.is_select"></RadioButton>
       </template>

@@ -9,10 +9,10 @@
     <div class="lg:block hidden" :class="{
     '!block': isOpen
   }">
-      <div v-if="items === undefined || items.length <= 0">
+      <div v-if="items === undefined || items.length <= 0 || items === null">
         <div class="py-2">Нет данных</div>
       </div>
-      <div class="py-2" :key="item.title" v-for="item in items">
+      <div v-else class="py-2" :key="item.title" v-for="item in items">
         <router-link :to="item.url">{{ item.title }}</router-link>
       </div>
     </div>
