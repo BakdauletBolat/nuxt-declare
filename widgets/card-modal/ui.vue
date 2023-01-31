@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 import CardList from '@/components/card-list/ui/index.vue';
 import cardStore from '@/entities/card/model/store';
-import Button from "~/components/ui/Button.vue";
+import Button from "@/components/ui/Button.vue";
 import {useRouter} from "vue-router";
 
 const router = useRouter();
