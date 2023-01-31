@@ -7,7 +7,7 @@
       }">{{ placeholder }}
       </div>
       <input @input="onInput($event)" v-maska :data-maska="isPhone ? '+7 (###) ### ## ##' : ''" autocomplete="off"
-        :aria-autocomplete="false" :value="value" :disabled="disabled" min="0" max="5000000" @focusin="isFocus = true"
+        :value="value" :disabled="disabled" min="0" max="5000000" @focusin="isFocus = true"
         :type="isOpen ? 'text' : type" @focusout="isFocus = false"
         class="b-input w-full py-[8px] border-b border-b-[#878787]" :name="name" />
       <img alt="isOPen" v-if="type === 'password'" @click="isOpen = !isOpen"

@@ -1,13 +1,13 @@
-import {defineStore} from "pinia";
-import {IUser} from "@/models/user";
+import { defineStore } from "pinia";
+import { IUser } from "@/models/user";
 import authService from "@/services/auth-service";
 import cardStore from '@/entities/card/model/store';
-import {useRouter} from "vue-router";
+
 
 const useUserStore = defineStore('user-store', () => {
     const user = ref<IUser | null>(null);
     const isLoadingUser = ref<boolean>(false);
-    const router = useRouter();
+
 
     const loadUser = async () => {
         isLoadingUser.value = true;
