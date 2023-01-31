@@ -12,7 +12,7 @@
 import CollectionStore from '@/entities/collection/model/store';
 import {useRoute} from "vue-router";
 import ProductList from "~/entities/product/ui/product-list.vue";
-import Breadcrumb, {IBreadcrump} from "~/components/UI/Breadcrumb.vue";
+import Breadcrumb, {IBreadcrump} from "~/components/ui/Breadcrumb.vue";
 
 const route = useRoute();
 const id = route.params.id;

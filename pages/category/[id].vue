@@ -9,7 +9,7 @@
 </template>
 <script lang="ts" setup>
 import {onMounted, ref} from 'vue';
-import Breadcrumb from '~~/components/UI/Breadcrumb.vue';
+import Breadcrumb from '~~/components/ui/Breadcrumb.vue';
 import {useProductStore} from '~~/stores/productStore';
 import {useHeaderStore} from '~~/stores/headerStore';
 import {ICategory} from '~~/models/category';

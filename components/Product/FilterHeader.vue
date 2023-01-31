@@ -116,11 +116,11 @@ import FilterIcon from '@/assets/icons/filter.vue';
 import SortIcon from '@/assets/icons/sort.vue';
 import {ref} from 'vue';
 import {useProductStore} from '~~/stores/productStore';
-import Accordion from '../UI/Accordion.vue';
-import Modal from '../UI/Modal.vue';
-import Button from '@/components/UI/Button.vue';
-import InputField from "~/components/UI/InputField.vue";
-import RadioButton from "~/components/UI/RadioButton.vue";
+import Accordion from '../ui/Accordion.vue';
+import Modal from '../ui/Modal.vue';
+import Button from '@/components/ui/Button.vue';
+import InputField from "~/components/ui/InputField.vue";
+import RadioButton from "~/components/ui/RadioButton.vue";
 import {useRoute} from "vue-router";
 
 

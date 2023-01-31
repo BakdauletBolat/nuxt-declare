@@ -30,12 +30,12 @@
 
 import {onUnmounted, onMounted} from 'vue';
 import {useHeaderStore} from "~/stores/headerStore";
-import FooterVue from '~~/components/Footer/Footer.vue';
+import FooterVue from '@/components/Footer/Footer.vue';
 import Header from '@/components/Header.vue';
-import MailingForm from '~~/components/UI/MailingForm.vue';
+import MailingForm from '@/components/ui/MailingForm.vue';
 import userStore from '@/stores/userStore';
 import cardStore from '@/entities/card/model/store';
-import Modal from '~~/components/UI/Modal.vue';
+import Modal from '@/components/ui/Modal.vue';
 import CardModal from '@/widgets/card-modal/ui.vue';
 import {useLocalStorage} from "#imports";
 

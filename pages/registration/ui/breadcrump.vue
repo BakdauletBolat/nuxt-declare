@@ -5,5 +5,5 @@
     }]"></Breadcrumb>
 </template>
 <script lang="ts" setup>
-import Breadcrumb from '~~/components/UI/Breadcrumb.vue';
+import Breadcrumb from '@/components/ui/Breadcrumb.vue';
 </script>

@@ -16,7 +16,7 @@
 </template>
 <script setup lang="ts">
 import {defineProps} from 'vue';
-import Spinner from "~/components/UI/Spinner.vue";
+import Spinner from "~/components/ui/Spinner.vue";
 defineProps({
   ref: {},
   isLoading: {

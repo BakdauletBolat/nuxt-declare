@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import {ICardItem} from "@/entities/card/model/interface";
 import CardItemPreview from "@/entities/card/ui/CardItemPreview.vue";
-import Button from "~/components/UI/Button.vue";
+import Button from "~/components/ui/Button.vue";
 
 const page = ref<number>(1);
 const emit = defineEmits(['load-more'])

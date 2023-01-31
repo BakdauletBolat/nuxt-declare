@@ -16,8 +16,8 @@
 import * as yup from "yup";
 import {useForm} from "vee-validate";
 import userStore from "~/stores/userStore";
-import InputField from "~/components/UI/InputField.vue";
-import Button from '@/components/UI/Button.vue';
+import InputField from "~/components/ui/InputField.vue";
+import Button from '@/components/ui/Button.vue';
 
 const schema = yup.object({
   first_name: yup.string().required("Обязательная поля"),

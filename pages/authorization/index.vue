@@ -31,8 +31,8 @@
   </SafeArea>
 </template>
 <script lang="ts" setup>
-import InputField from '@/components/UI/InputField.vue';
-import Button from '@/components/UI/Button.vue';
+import InputField from '@/components/ui/InputField.vue';
+import Button from '@/components/ui/Button.vue';
 import authStore from './model/store';
 import {useRouter} from "vue-router";
 

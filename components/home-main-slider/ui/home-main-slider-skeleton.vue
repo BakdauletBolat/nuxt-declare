@@ -8,5 +8,5 @@
     </div>
 </template>
 <script setup lang="ts">
-import Skeleton from '@/components/UI/Skeleton.vue';
+import Skeleton from '@/components/ui/Skeleton.vue';
 </script>

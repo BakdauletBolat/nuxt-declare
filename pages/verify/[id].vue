@@ -20,7 +20,7 @@
 </template>
 <script lang="ts" setup>
 import {ref} from 'vue';
-import Button from '@/components/UI/Button.vue';
+import Button from '@/components/ui/Button.vue';
 import Breadcrump from './ui/breadcrump-verify.vue';
 import authService from '@/services/auth-service';
 import {verifyUser} from './api/verify-user';

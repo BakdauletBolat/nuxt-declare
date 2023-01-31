@@ -28,8 +28,21 @@
       <change beforePath="$PROJECT_DIR$/components/UI/Select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/UI/Skeleton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Skeleton.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/UI/Spinner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Spinner.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/card-item-pagination/ui.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/card-item-pagination/ui.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home-main-slider/ui/home-main-slider-skeleton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/home-main-slider/ui/home-main-slider-skeleton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/user-change-form/ui.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/user-change-form/ui.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/address/ui/create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/entities/address/ui/create.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entities/category/ui/category-slide-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/entities/category/ui/category-slide-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/product/ui/product-skeleton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/entities/product/ui/product-skeleton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/authorization/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/authorization/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/category/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/category/[id].vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/collection/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/collection/[id].vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/product/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/product/[id].vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/registration/ui/breadcrump.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/registration/ui/breadcrump.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/registration/ui/user-registration-form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/registration/ui/user-registration-form.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/verify/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/verify/[id].vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/verify/ui/breadcrump-verify.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/verify/ui/breadcrump-verify.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stores/productStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/stores/productStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/widgets/card-modal/ui.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widgets/card-modal/ui.vue" afterDir="false" />
     </list>
@@ -108,7 +121,7 @@
       <workItem from="1674746726555" duration="26123000" />
       <workItem from="1674896106344" duration="28161000" />
       <workItem from="1675051788763" duration="3014000" />
-      <workItem from="1675161796927" duration="545000" />
+      <workItem from="1675161796927" duration="862000" />
     </task>
     <servers />
   </component>

@@ -59,11 +59,11 @@
 </template>
 <script setup lang="ts">
 import {ref} from 'vue';
-import InfoText from "~/components/UI/InfoText.vue";
-import GroupButton from "~/components/UI/GroupButton.vue";
-import Button from "~/components/UI/Button.vue";
+import InfoText from "~/components/ui/InfoText.vue";
+import GroupButton from "~/components/ui/GroupButton.vue";
+import Button from "~/components/ui/Button.vue";
 import RightArrow from '@/assets/icons/right-arrow.svg';
-import Accordion from "~/components/UI/Accordion.vue";
+import Accordion from "~/components/ui/Accordion.vue";
 import {IProduct} from '~~/models/product';
 import cardStore from '@/entities/card/model/store';
 import {v4 as uuidv4} from 'uuid';
