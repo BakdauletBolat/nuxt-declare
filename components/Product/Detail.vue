@@ -74,6 +74,7 @@ const props = defineProps<{
 
 const isLoading = ref<boolean>(false);
 
+console.log(props.product);
 
 const isInCard = computed(() => {
   const index = cardStore.card?.attributes.items.findIndex(cardItem => cardItem.product.data.id == props.product.id);

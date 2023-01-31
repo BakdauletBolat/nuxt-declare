@@ -1,6 +1,6 @@
 <template>
   <div class="flex gap-[20px] items-center">
-    <div class="card-item__img flex-shrink-0"><img alt="изо" :src="cardItem.product.data.picture.data.attributes.url"/>
+    <div class="card-item__img flex-shrink-0"><img alt="изо" :src="cardItem.product?.data?.picture.data.attributes.url"/>
     </div>
     <section class="flex w-full items-center justify-between gap-[30px]">
       <div class="content">

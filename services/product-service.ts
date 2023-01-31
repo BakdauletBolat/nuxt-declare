@@ -16,6 +16,7 @@ class ProductService extends ApiService {
     async getProduct(id: string | string[]) {
         const data = (await this.get<IProductSingleData>(`/products/${id}`, {},
             ['pictures',
+                'picture',
                 "collections",
                 "brand",
                 "customer_type",
