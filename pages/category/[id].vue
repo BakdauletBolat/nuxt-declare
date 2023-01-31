@@ -14,7 +14,7 @@ import {useProductStore} from '~~/stores/productStore';
 import {useHeaderStore} from '~~/stores/headerStore';
 import {ICategory} from '~~/models/category';
 import categoryService from '~~/services/category-service';
-import {useRoute} from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
 import ProductList from "~/entities/product/ui/product-list.vue";
 
 
@@ -27,6 +27,7 @@ const options = ref<any>([{
 
 
 const route = useRoute();
+const router = useRouter();
 
 
 const loadActiveCategory = async () => {
@@ -35,7 +36,12 @@ const loadActiveCategory = async () => {
 }
 
 const loadProducts = async () => {
-  productStore.submitFilters();
+  const filtersData = productStore.submitFilters();
+  await router.replace(
+      {
+        query: Object.assign({}, filtersData)
+      }
+  )
   await loadActiveCategory();
   await productStore.loadProducts(1,
       Object.assign({

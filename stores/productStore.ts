@@ -1,13 +1,12 @@
 import {defineStore} from "pinia";
 import productService from "~/services/product-service";
 import {IMeta, IProduct} from "~~/models/product";
-import {ref, computed} from 'vue';
+import {ref} from 'vue';
 import {ICollection} from "~~/models/collection";
 import collectionService from "~~/services/collection-service";
 import categoryService from "~~/services/category-service";
 import {ICategoryMenu} from "~~/models/category";
 import lodash from "lodash";
-import {useRoute, useRouter} from "vue-router";
 
 export const useProductStore = defineStore('product-store', () => {
 
@@ -23,7 +22,6 @@ export const useProductStore = defineStore('product-store', () => {
     const isLastPage = ref<boolean>(false);
     const filters = ref<{ [key: string]: ICategoryMenu[] } | undefined>({});
 
-    const router = useRouter();
 
     const submitFilters = () => {
         const keys = Object.keys(filters.value!);
@@ -42,11 +40,7 @@ export const useProductStore = defineStore('product-store', () => {
         });
 
 
-        router.replace(
-            {
-                query: Object.assign({}, filtersData)
-            }
-        )
+
         return filtersData;
     };
 

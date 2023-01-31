@@ -5,55 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e1d6d8-67f5-47bb-83c5-085aa25562cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/card-item-pagination/ui.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/RadioButton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/Spinner.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/user-change-form/ui.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/address/model/interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/address/model/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/address/ui/create.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/card/ui/CardItemPreview.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/category/ui/category-slide-list.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/category/ui/category-slide.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/collection/model/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/product/ui/product-card.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/product/ui/product-list.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/product/ui/product-skeleton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/user/ui/contact.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/authorization/model/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/collection/[id].vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/create-order.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/create-order/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/create-order/payment.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/create-order/ui/steps.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile/change-password.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile/my-addresses.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile/my-orders.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile/push-news.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/profile/user-information.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/registration/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/address-service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/widgets/category-slider/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/widgets/category-slider/ui.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/widgets/order-detail/ui/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/widgets/profile-nav-list/ui/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/widgets/profile-nav-list/ui/nav-list-item.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CardList/ui/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/CardList/ui/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CategoryCard.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CategorySliderGroup.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Footer/Footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Footer/Footer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Footer/FooterMenuItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Footer/FooterMenuItem.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/GuestRedirect.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/GuestRedirect.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Header/CategoryMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header/CategoryMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Header/DesktopMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header/DesktopMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Header/HeaderLogo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header/HeaderLogo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/HomeMainSlider/model/interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/home-main-slider/model/interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/HomeMainSlider/ui/HomeMainSliderItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/home-main-slider/ui/home-main-slider-item.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/HomeMainSlider/ui/HomeMainSliderSkeleton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/home-main-slider/ui/home-main-slider-skeleton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/HomeMainSlider/ui/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/home-main-slider/ui/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CardList/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/card-list/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CardList/ui/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/card-list/ui/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Product/CollectionCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/product/CollectionCard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Product/Detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/product/Detail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Product/FilterHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/product/FilterHeader.vue" afterDir="false" />
@@ -70,36 +24,14 @@
       <change beforePath="$PROJECT_DIR$/components/UI/InputField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/InputField.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/UI/MailingForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/MailingForm.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/UI/Modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Modal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/UI/RadioButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/RadioButton.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/UI/Select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/UI/Skeleton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Skeleton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/card/api/local.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entities/card/api/local.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/card/api/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entities/card/api/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/card/model/interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entities/card/model/interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/card/model/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/entities/card/model/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/card/ui/CardItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/entities/card/ui/CardItem.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/category.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/authorization/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/authorization/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/UI/Spinner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/Spinner.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entities/category/ui/category-slide-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/entities/category/ui/category-slide-list.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/category/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/category/[id].vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/product/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/product/[id].vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/profile/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/profile/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/registration/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/registration/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/registration/ui/user-registration-form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/registration/ui/user-registration-form.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/verify/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/verify/[id].vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/verify/api/verify-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/verify/api/verify-user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/api-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/api-service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/banner-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/banner-service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/category-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/category-service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/collection-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/services/collection-service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stores/headerStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/stores/headerStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stores/productStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/stores/productStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stores/userStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/stores/userStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/CardModal/ui.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widgets/card-modal/ui.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widgets/card-modal/ui.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widgets/card-modal/ui.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +106,8 @@
       <workItem from="1672814685232" duration="254000" />
       <workItem from="1674581163222" duration="21918000" />
       <workItem from="1674746726555" duration="26123000" />
-      <workItem from="1674896106344" duration="27466000" />
+      <workItem from="1674896106344" duration="28161000" />
+      <workItem from="1675051788763" duration="3014000" />
     </task>
     <servers />
   </component>

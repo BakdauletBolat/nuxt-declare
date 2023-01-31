@@ -8,7 +8,7 @@ import CardItem from '@/entities/card/ui/CardItem.vue';
 import { ICardItem } from '@/entities/card/model/interface';
 
 defineProps<{
-    items: ICardItem[] | undefined
+    items?: ICardItem[] | undefined
 }>();
 </script>
 <style lang="scss">

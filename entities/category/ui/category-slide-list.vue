@@ -10,7 +10,7 @@ import {ICategory} from "~/models/category";
 const modules = [Pagination];
 
 defineProps<{
-  items: ICategory[]
+  items?: ICategory[]
 }>();
 
 const pagination = {
