@@ -11,8 +11,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import InputField from "~/components/ui/InputField.vue";
-import Select from "~/components/ui/Select.vue";
+import InputField from "@/components/ui/InputField.vue";
+import Select from "@/components/ui/Select.vue";
 import {useAddressCreateStore} from '@/entities/address/model/store';
 
 const addressCreateStore = useAddressCreateStore();

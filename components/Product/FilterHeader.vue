@@ -119,8 +119,8 @@ import {useProductStore} from '~~/stores/productStore';
 import Accordion from '../ui/Accordion.vue';
 import Modal from '../ui/Modal.vue';
 import Button from '@/components/ui/Button.vue';
-import InputField from "~/components/ui/InputField.vue";
-import RadioButton from "~/components/ui/RadioButton.vue";
+import InputField from "@/components/ui/InputField.vue";
+import RadioButton from "@/components/ui/RadioButton.vue";
 import {useRoute} from "vue-router";
 
 

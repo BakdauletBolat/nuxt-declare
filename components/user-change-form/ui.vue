@@ -15,8 +15,8 @@
 <script lang="ts" setup>
 import * as yup from "yup";
 import {useForm} from "vee-validate";
-import userStore from "~/stores/userStore";
-import InputField from "~/components/ui/InputField.vue";
+import userStore from "@/stores/userStore";
+import InputField from "@/components/ui/InputField.vue";
 import Button from '@/components/ui/Button.vue';
 
 const schema = yup.object({
