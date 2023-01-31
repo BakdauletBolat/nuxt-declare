@@ -30,15 +30,12 @@
 
 </template>
 <script setup lang="ts">
-import {Field} from 'vee-validate';
 import {ref} from 'vue';
 import CloseImg from '@/assets/icons/close.png';
 import OpenImg from '@/assets/icons/open.png';
-import {vMaska} from "maska"
 
-const props = defineProps(['name','disabled', 'placeholder', 'value', 'errorMessage', 'type', 'isPhone']);
+defineProps(['name', 'disabled', 'placeholder', 'value', 'errorMessage', 'type', 'isPhone']);
 const emit = defineEmits(['update:value']);
-
 const onInput = (event: any) => {
   emit('update:value', event.target.value);
 }

@@ -35,7 +35,6 @@
       <change beforePath="$PROJECT_DIR$/entities/category/ui/category-slide-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/entities/category/ui/category-slide-list.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entities/product/ui/product-skeleton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/entities/product/ui/product-skeleton.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/authorization/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/authorization/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/category/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/category/[id].vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/collection/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/collection/[id].vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/product/[id].vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/product/[id].vue" afterDir="false" />
@@ -121,7 +120,7 @@
       <workItem from="1674746726555" duration="26123000" />
       <workItem from="1674896106344" duration="28161000" />
       <workItem from="1675051788763" duration="3014000" />
-      <workItem from="1675161796927" duration="1013000" />
+      <workItem from="1675161796927" duration="1368000" />
     </task>
     <servers />
   </component>
