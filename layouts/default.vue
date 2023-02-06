@@ -13,6 +13,7 @@
       </template>
     </notifications>
 
+
     <Header></Header>
     <Modal :style="{zIndex: '1000'}"
            title="Корзина"
@@ -21,9 +22,12 @@
       <CardModal></CardModal>
 
     </Modal>
-    <slot></slot>
+    <UserLoading>
+      <slot></slot>
+    </UserLoading>
     <MailingForm></MailingForm>
     <FooterVue></FooterVue>
+
   </div>
 </template>
 <script lang="ts" setup>
@@ -33,31 +37,18 @@ import {useHeaderStore} from "~/stores/headerStore";
 import FooterVue from '@/components/Footer/Footer.vue';
 import Header from '@/components/Header.vue';
 import MailingForm from '@/components/ui/MailingForm.vue';
-import userStore from '@/stores/userStore';
 import cardStore from '@/entities/card/model/store';
 import Modal from '@/components/ui/Modal.vue';
 import CardModal from '@/widgets/card-modal/ui.vue';
-import {useLocalStorage} from "#imports";
+import UserLoading from '@/widgets/user-loading/ui.vue';
 
 const headerStore = useHeaderStore();
 const handleScroll = () => {
   headerStore.useScrollActive();
 }
 
-const loadStartUpData = async () => {
-  const token = await useLocalStorage('token', undefined).value
-  if (token != 'undefined') {
-    try {
-      await userStore.loadUser();
-    } catch (e) {
-      console.log(e);
-    }
-  }
-  await cardStore.loadCard();
-}
 
 onMounted(() => {
-  loadStartUpData();
   window.addEventListener('scroll', handleScroll);
 });
 

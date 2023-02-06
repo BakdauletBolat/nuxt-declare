@@ -10,6 +10,25 @@ class AddressService extends ApiService {
         }>('/user/address/', data);
     }
 
+    async updateAddress(data:any,id: string | string[]) {
+        return await this.patch<{
+            data: IAddress
+        }>('/user/address/'+id.toString(), data);
+    }
+
+    async getAddresses() {
+        return await this.get<{
+            data: IAddress[]
+        }>('/user/address/');
+    }
+
+    async getAddress(id: string | string[]) {
+        return await this.get<{
+            data: IAddress
+        }>('/user/address/'+id.toString());
+    }
+
+
     async getCities() {
         return await this.get<{
             data: ICity[]

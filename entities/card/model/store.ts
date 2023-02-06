@@ -40,8 +40,6 @@ const useCardStore = defineStore('card-store', () => {
             return true;
         }
         card.value?.attributes.items.push(...data.attributes.items);
-
-
         return false;
     }
 

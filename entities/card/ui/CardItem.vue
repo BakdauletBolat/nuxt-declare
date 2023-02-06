@@ -1,6 +1,7 @@
 <template>
   <div class="flex gap-[20px] items-center">
-    <div class="card-item__img flex-shrink-0"><img alt="изо" :src="cardItem.product?.data?.picture.data.attributes.url"/>
+    <div class="card-item__img flex-shrink-0"><img alt="изо"
+                                                   :src="cardItem.product?.data?.picture.data.attributes.url"/>
     </div>
     <section class="flex w-full items-center justify-between gap-[30px]">
       <div class="content">
@@ -21,7 +22,7 @@
         </div>
       </div>
       <div class="flex justify-end items-center card-item__s flex-shrink-0">
-        <HeartIcon width="20" height="20" color="black"></HeartIcon>
+        <Heart :product="cardItem.product.data"></Heart>
         <img class="cursor-pointer" @click="removeCardItem"
              :style="{ width: '14px', height: '14px' }" :src="closeImg"/>
       </div>
@@ -30,18 +31,18 @@
 </template>
 <script lang="ts" setup>
 import {ICardItem} from '../model/interface';
-import HeartIcon from '~~/assets/icons/heart.vue';
 import closeImg from '~~/assets/icons/exit.svg';
+import Heart from '@/entities/product/ui/heart.vue';
 import cardStore from '@/entities/card/model/store';
 
 const props = defineProps<{
   cardItem: ICardItem
 }>();
 
-const quantityValue = ref(props.cardItem.attributes.quantity);
+const quantityValue = ref(props.cardItem.attributes?.quantity);
 
 const removeCardItem = async () => {
-  cardStore.removeCardItem(props.cardItem.id);
+  await cardStore.removeCardItem(props.cardItem.id);
 }
 
 const changeQuanty = (value: any) => {

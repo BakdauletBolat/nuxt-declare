@@ -24,7 +24,7 @@
             :type-button="isInCard ? 'bordered': 'primary'"
             @click="addToCard">{{ isInCard ? 'В корзину' : 'ДОБАВИТЬ В КОРЗИНУ' }}
     </Button>
-    <Button  class="mt-[9px]" typeButton="secondary">КУПИТЬ В 1 КЛИК <span><img :src="RightArrow" alt=""></span></Button>
+    <Button class="mt-[9px]" typeButton="secondary">КУПИТЬ В 1 КЛИК <span><img :src="RightArrow" alt=""></span></Button>
     <Accordion>
       <template v-slot:title>ДОСТАВКА И ОПЛАТА</template>
       <template v-slot:body>
@@ -74,7 +74,6 @@ const props = defineProps<{
 
 const isLoading = ref<boolean>(false);
 
-console.log(props.product);
 
 const isInCard = computed(() => {
   const index = cardStore.card?.attributes.items.findIndex(cardItem => cardItem.product.data.id == props.product.id);
@@ -84,28 +83,27 @@ const isInCard = computed(() => {
 const addToCard = async () => {
   if (!isInCard.value) {
     isLoading.value = true;
+    const dataCard = {
+        id: uuidv4(),
+        object: 'Card',
+        attributes: {
+          product_id: props.product.id as number,
+          quantity: 1
+        },
+        product: {
+          data: props.product
+        }
+      };
+    console.log(props.product.attributes) ;
     try {
-        await cardStore.addCardItem({
-      id: uuidv4(),
-      object: 'Card',
-      attributes: {
-        product_id: props.product.id as number,
-        quantity: 1
-      },
-      product: {
-        data: props.product
-      }
-    });
-    }
-    catch (e) {
+      await cardStore.addCardItem(dataCard);
+    } catch (e) {
       console.log(e)
-    }
-    finally {
+    } finally {
       isLoading.value = false;
     }
 
   }
-
   cardStore.openModal();
 }
 

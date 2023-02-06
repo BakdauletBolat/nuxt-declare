@@ -1,50 +1,54 @@
 <template>
   <SafeArea>
-    <GuestRedirect>
-      <main class="container mx-auto px-[15px] grid lg:grid-cols-2 gap-[20px]">
-        <section class="mt-[24px] max-w-[500px] mx-auto">
-          <h1 class="text-[21px] text-center">Вход</h1>
-          <p class="mt-[20px] px-[16px] text-center">Если у вас есть учётная запись, пожалуйста, войдите</p>
-          <div class="flex flex-col justify-center mt-[45px] items-center w-full mx-auto">
-            <InputField :isPhone="true" :errorMessage="authStore.errors.phone" placeholder="Телефон*"
-                        :value="authStore.phone" @update:value="newValue => authStore.phone = newValue" name="phone"/>
-            <InputField type="password" class="mt-[30px]" @update:value="newValue => authStore.password = newValue"
-                        :errorMessage="authStore.errors.password"
-                        placeholder="Пароль*" :value="authStore.password" name="password"/>
-            <Button @click="authStore.signup" :is-loading="authStore.isLoading" class="mt-[30px] uppercase">ВОЙТИ
-            </Button>
-            <a href="#" class="text-[#525252] mt-[20px] block">Забыли пароль ?</a>
-          </div>
-        </section>
-        <section class="mt-[36px] block max-w-[500px] mx-auto">
-          <h1 class="text-[21px] text-center block">РЕГИСТРАЦИЯ</h1>
-          <p class="mt-[20px] px-[16px] text-center block">Создайте свою учётную запись, и вы сможете
-            экономить
-            время
-            при оформлении заказа, просматривать свою корзину и сохранённые товары с любого устройства
-            и получите
-            доступ к истории заказов</p>
-          <Button @click="navigateToRegistration" class="mt-[40px]">ЗАРЕГИСТРИРОВАТЬСЯ</Button>
-        </section>
-      </main>
-    </GuestRedirect>
+    <main class="container mx-auto px-[15px] grid lg:grid-cols-2 gap-[20px]">
+      <section class="mt-[24px] max-w-[500px] mx-auto">
+        <h1 class="text-[21px] text-center">Вход</h1>
+        <p class="mt-[20px] px-[16px] text-center">Если у вас есть учётная запись, пожалуйста, войдите</p>
+        <Form @submit="login"
+              :validation-schema="authStore.validation_schema"
+              class="flex flex-col justify-center mt-[45px] items-center w-full mx-auto">
+          <PhoneInput name="phone" label="Телефон*"></PhoneInput>
+          <PasswordInput class="mt-[30px]" label="Пароль*" name="password"/>
+          <Button type="submit" :is-loading="authStore.isLoading" class="mt-[30px] uppercase">ВОЙТИ</Button>
+          <a href="#" class="text-[#525252] mt-[20px] block">Забыли пароль ?</a>
+        </Form>
+      </section>
+      <section class="mt-[36px] block max-w-[500px] mx-auto">
+        <h1 class="text-[21px] text-center block">РЕГИСТРАЦИЯ</h1>
+        <p class="mt-[20px] px-[16px] text-center block">Создайте свою учётную запись, и вы сможете
+          экономить
+          время
+          при оформлении заказа, просматривать свою корзину и сохранённые товары с любого устройства
+          и получите
+          доступ к истории заказов</p>
+        <Button @click="navigateToRegistration" class="mt-[40px]">ЗАРЕГИСТРИРОВАТЬСЯ</Button>
+      </section>
+    </main>
   </SafeArea>
 </template>
 <script lang="ts" setup>
-import InputField from '@/components/ui/InputField.vue';
-import Button from '@/components/ui/Button.vue';
 import authStore from './model/store';
-import {useRouter} from "vue-router";
+import {navigateTo} from "#app";
+import {notify} from "@kyvg/vue3-notification";
+import Button from '@/components/ui/Button.vue';
+import PhoneInput from "~/components/ui/inputs/phone-input.vue";
+import PasswordInput from "~/components/ui/inputs/password-input.vue";
+import {Form} from 'vee-validate';
 
-const router = useRouter();
+
 const navigateToRegistration = () => {
-  router.push('/registration')
+  navigateTo('/registration')
 }
 
-
-definePageMeta({
-  middleware: 'guest'
-});
+const login = async (values: any) => {
+  try {
+    await authStore.signup(values);
+  } catch (e: any) {
+    notify({
+      title: e.response.data.message
+    })
+  }
+}
 
 </script>
 <style lang="scss">

@@ -4,8 +4,7 @@
         to: '/registration'
     },
     {
-        title: 'Верификация',
-        to: '/verify'
+        title: 'Верификация'
     }]"></Breadcrumb>
 </template>
 <script lang="ts" setup>

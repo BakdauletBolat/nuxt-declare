@@ -1,5 +1,6 @@
 <template>
     <div class="select relative py-[8px] border-b border-b-[#878787]">
+        <BaseInput type="hidden" :default-value="defaultValue" :name="name" default-value="1"></BaseInput>
         <div @click="open" class="flex items-center cursor-pointer">
             <div class="mr-2">
             {{value.title}}
@@ -23,6 +24,8 @@
 
 import { defineProps, defineEmits, ref } from 'vue';
 import Dropdown from '@/assets/icons/dropdown.vue';
+import BaseInput from "~/components/ui/inputs/base-input.vue";
+import {prop} from "dom7";
 const isOpen = ref<boolean>(false);
 
     const open = () => {
@@ -30,10 +33,13 @@ const isOpen = ref<boolean>(false);
     }
 
 const emit = defineEmits(['change']);
-defineProps(['value', 'options','isActive']);
+const props = defineProps(['value', 'options','isActive','name', 'defaultValue']);
 
 const changeSelect = (value:any) => {
     emit('change',value);
+    if (props.defaultValue) {
+      emit('change', props.defaultValue);
+    }
     isOpen.value = false;
 }
 

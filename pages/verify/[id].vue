@@ -1,38 +1,34 @@
 <template>
   <SafeArea>
-    <GuestRedirect>
-      <Breadcrump></Breadcrump>
-      <div class="container px-[15px] mx-auto max-w-[500px]">
-        <h1 class="mt-[24px] text-[21px] text-center">Верификация</h1>
-        <p class="mt-[20px] px-[16px] text-center">Благодарим вас за регистрацию!Необходимо подтвердить свою
-          учётную
-          запись, вам на почту email@gmail.com было отправлено письмо с ссылкой для подтверждения</p>
-        <div class="mt-[20px]">
-          <div class="flex gap-[10px] justify-center" ref="otpCont">
-            <input @keydown="handleKeyDown($event, index)" v-for="(el, index) in digits"
-                   v-model="digits[index]" :key="index" class="digit-box" type="text" maxlength="1"/>
-          </div>
-          <Button :isLoading="isLoading" @click="submit" class="mt-[30px]">Отправить</Button>
+    <Breadcrump></Breadcrump>
+    <div class="container px-[15px] mx-auto max-w-[500px]">
+      <h1 class="mt-[24px] text-[21px] text-center">Верификация</h1>
+      <p class="mt-[20px] px-[16px] text-center">Благодарим вас за регистрацию!Необходимо подтвердить свою
+        учётную
+        запись, вам на почту email@gmail.com было отправлено письмо с ссылкой для подтверждения</p>
+      <div class="mt-[20px]">
+        <div class="flex gap-[10px] justify-center" ref="otpCont">
+          <input @keydown="handleKeyDown($event, index)" v-for="(el, index) in digits"
+                 v-model="digits[index]" :key="index" class="digit-box" type="text" maxlength="1"/>
         </div>
+        <Button :isLoading="isLoading" @click="submit" class="mt-[30px]">Отправить</Button>
       </div>
-    </GuestRedirect>
+    </div>
   </SafeArea>
 </template>
 <script lang="ts" setup>
 import {ref} from 'vue';
 import Button from '@/components/ui/Button.vue';
 import Breadcrump from './ui/breadcrump-verify.vue';
-import authService from '@/services/auth-service';
 import {verifyUser} from './api/verify-user';
-import userStore from '~~/stores/userStore';
 import {notify} from "@kyvg/vue3-notification";
+import {authUserAndNavigateProfile} from '@/entities/user/service/authUser';
 
 const digits = ref<number[] | null[]>([null, null, null, null]);
 const isLoading = ref<boolean>(false);
 const otpCont = ref<any>(null);
 const digits_value = computed(() => digits.value.join(''));
 const route = useRoute();
-const router = useRouter();
 const handleKeyDown = function (event: any, index: number) {
 
   if (event.key !== "Tab" &&
@@ -61,6 +57,7 @@ const handleKeyDown = function (event: any, index: number) {
   }
 }
 
+
 const submit = async () => {
   isLoading.value = true;
   try {
@@ -68,25 +65,18 @@ const submit = async () => {
       code: digits_value.value,
       phone: route.params.id
     });
-    authService.saveTokenToLocalStorage(data!.access_token, data!.refresh_token);
+    await authUserAndNavigateProfile(data);
   } catch (e: any) {
     notify({
-      title: e.toString()
+      title: e.response.data.message
     })
   } finally {
     isLoading.value = false;
   }
 
 
-  await userStore.loadUser();
-  router.push({
-    name: 'profile'
-  });
 }
 
-definePageMeta({
-  middleware: 'guest'
-})
 
 </script>
 <style lang="scss">

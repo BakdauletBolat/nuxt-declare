@@ -18,13 +18,12 @@
 import CardList from '@/components/card-list/ui/index.vue';
 import cardStore from '@/entities/card/model/store';
 import Button from "@/components/ui/Button.vue";
-import {useRouter} from "vue-router";
+import {navigateTo} from "#app";
 
-const router = useRouter();
 const navigateToCreate = () => {
-  router.push({
+  navigateTo({
     name: 'create-order'
-  })
+  });
   cardStore.closeModal();
 }
 </script>

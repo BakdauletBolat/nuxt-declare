@@ -45,11 +45,15 @@ import MailIcon from '@/assets/icons/mail.vue';
 const itemsDeclare = [
   {
     title: 'О компании',
-    url: '/'
+    url: {
+      name: 'about'
+    }
   },
   {
     title: 'Новости',
-    url: '/'
+    url: {
+      name: 'news'
+    }
   },
   {
     title: 'Контакты',

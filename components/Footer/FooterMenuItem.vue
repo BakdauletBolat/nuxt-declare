@@ -13,7 +13,7 @@
         <div class="py-2">Нет данных</div>
       </div>
       <div v-else class="py-2" :key="item.title" v-for="item in items">
-        <router-link :to="item.url">{{ item.title }}</router-link>
+        <NuxtLink :to="item.url">{{ item.title }}</NuxtLink>
       </div>
     </div>
   </div>

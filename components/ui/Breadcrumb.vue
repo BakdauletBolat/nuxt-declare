@@ -1,6 +1,7 @@
 <style lang="scss">
 .breadcrumb {
   font-size: 10px;
+
   &:after {
     padding: 0 5px;
     content: '/';
@@ -14,42 +15,44 @@
 }
 </style>
 <template>
-  <div class="grid container items-center mx-auto py-[25.5px] gap-[24px] lg:gap-0 lg:grid-cols-3 px-3"
-      :class="{
-        'justify-center': centered
-      }">
-      <div>
-        <router-link v-if="backTitle" class="flex gap-[10px] text-[#878787] uppercase" :to="
-            typeof backLink == 'string' ? backLink : {
-              name: backLink?.name,
-              params: backLink?.params
-            }
-        ">
-          <img :src="LeftArrow" alt="">
-        <div>Обратно к списку</div>
-      </router-link>
+  <div class="grid container items-center mx-auto gap-[24px] py-[20px] lg:gap-0 lg:grid-cols-3 px-3"
+       :class="{'justify-center': centered}">
+    <section v-if="backTitle">
+      <div @click="navigateBack" class="flex gap-[10px] cursor-pointer text-[#878787] uppercase">
+        <img :src="LeftArrow" alt="">
+        <div>{{ backTitle }}</div>
       </div>
-    
-    <div class="flex uppercase items-center lg:justify-center text-[#878787]">
-      <span class="breadcrumb" v-for="item in options">
-        <router-link v-if="item.to" :to="
+    </section>
+    <section v-if="options" class="flex col-span-3 justify-center  uppercase text-[#878787]"
+             :class="{
+      '!justify-start col-span-2': backTitle
+              }">
+      <span  class="breadcrumb" v-for="item in options">
+        <NuxtLink v-if="item.to" :to="
         typeof item.to == 'string' ? item.to : {
           name: item.to.name,
           params: item.to.params
         }
         ">
           {{ item.title }}
-        </router-link>
+        </NuxtLink>
         <span v-else>
           {{ item.title }}
         </span>
       </span>
-    </div>
+    </section>
   </div>
 </template>
 
 <script lang="ts" setup>
 import LeftArrow from 'assets/icons/left-arrow.svg';
+import {useRouter} from "vue-router";
+
+const router = useRouter();
+
+const navigateBack = () => {
+  router.back();
+}
 
 export interface IBreadcrump {
   title: string;
@@ -61,7 +64,7 @@ export interface IBreadcrump {
 
 defineProps<{
   centered?: boolean,
-  options: IBreadcrump[],
+  options?: IBreadcrump[],
   backTitle?: string;
   backLink?: string | {
     name: string;

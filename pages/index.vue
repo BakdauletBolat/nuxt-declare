@@ -4,14 +4,8 @@
     <div class="pt-20 pb-16 text-center uppercase text-[22px] md:text-[28px]">
       <div>Специальные цены</div>
     </div>
-    <div v-if="homeStore.loadingSpecialPriceProducts && homeStore.specialPriceProducts.length < 1">
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-[20px] px-[20px]">
-        <ProductSkeleton v-for="index in Array.from(Array(3).keys())"></ProductSkeleton>
-      </div>
-    </div>
-    <div v-if="homeStore.specialPriceProducts">
-      <ProductSliderGroup :products="homeStore.specialPriceProducts"></ProductSliderGroup>
-    </div>
+    <ProductSliderList :is-loading="homeStore.loadingSpecialPriceProducts"
+                       :items="homeStore.specialPriceProducts"></ProductSliderList>
 
     <div v-if="homeStore.lastCollection" class="bg-primary mt-20 bg-[url(@/assets/Banner.png)] bg-cover bg-no-repeat">
       <div class="text-white container flex mx-auto justify-center md:justify-end">
@@ -24,7 +18,9 @@
             params: {
               id: homeStore.lastCollection?.id
             }
-          }" class="text-lg block pt-[156px] cursor-pointer font-semibold">{{ homeStore.lastCollection?.attributes.btn_text }}</NuxtLink>
+          }" class="text-lg block pt-[156px] cursor-pointer font-semibold">
+            {{ homeStore.lastCollection?.attributes.btn_text }}
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -51,10 +47,10 @@
 
 <script lang="ts" setup>
 import HomeMainSlider from "../components/home-main-slider/ui/index.vue";
-import ProductSliderGroup from "../components/Product/ProductSliderGroup.vue";
+import ProductSliderList from "~/entities/product/ui/product-slider-list.vue";
 import CategorySlider from '@/widgets/category-slider/ui.vue';
-import { onMounted } from "vue";
-import { useHomeStore } from "~/stores/homeStore";
+import {onMounted} from "vue";
+import {useHomeStore} from "~/stores/homeStore";
 
 const homeStore = useHomeStore();
 

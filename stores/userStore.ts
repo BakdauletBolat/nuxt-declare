@@ -1,7 +1,8 @@
-import { defineStore } from "pinia";
-import { IUser } from "@/models/user";
+import {defineStore} from "pinia";
+import {IUser} from "@/models/user";
 import authService from "@/services/auth-service";
 import cardStore from '@/entities/card/model/store';
+import {useFetch} from "#app";
 
 
 const useUserStore = defineStore('user-store', () => {
@@ -13,6 +14,9 @@ const useUserStore = defineStore('user-store', () => {
         isLoadingUser.value = true;
         try {
             user.value = (await authService.getUser()).data;
+            useLocalStorage('user', user.value);
+        } catch (e) {
+            useLocalStorage('user', undefined);
         } finally {
             isLoadingUser.value = false;
         }

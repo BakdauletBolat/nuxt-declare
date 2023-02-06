@@ -56,6 +56,15 @@ class CardAPIServer extends ApiService {
     }
 
 
+    async multipleCreate(itemsData: {
+        items: {
+            product_id: number;
+            quantity: number;
+        }[]
+    }) {
+        return await this.post('/user/carts/items', itemsData);
+    }
+
 }
 
 export default new CardAPIServer();

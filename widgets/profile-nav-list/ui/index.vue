@@ -9,9 +9,8 @@
 <script setup lang="ts">
 import NavListItem from "./nav-list-item.vue";
 import userStore from "~/stores/userStore";
-import {useRouter} from "vue-router";
+import {navigateTo} from "#app";
 
-const router = useRouter();
 
 const props = defineProps<{
   items?: INavListItem[]
@@ -20,9 +19,9 @@ const props = defineProps<{
 const logoutUser = async () => {
   try {
     await userStore.logoutUser();
-    await router.push({
+    await navigateTo({
       name: 'authorization'
-    })
+    });
   } catch (e) {
     console.log(e);
   }

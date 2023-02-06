@@ -8,6 +8,10 @@ class CollectionService extends ApiService {
         return await this.get<ICollectionData>('/catalog/collections', filter, include);
     }
 
+    async getCollections() {
+        return await this.get<ICollectionData>('/catalog/collections');
+    }
+
     async getCollection({id}: {
         id: string | string[]
     }) {

@@ -1,22 +1,29 @@
 <template>
-    <SafeArea>
-        <div v-if="products" class="grid grid-cols-2 lg:grid-cols-3">
-            <div :key="`${product.id}${index}`" v-for="product, index in products">
-                <ProductCard v-if="product.object == 'Product'" :product="(product as IProduct)">
-                </ProductCard>
-            </div>
-        </div>
-    </SafeArea>
+  <SafeArea>
+    <ProductList v-if="products" :is-loading="isLoading" :products="products"></ProductList>
+  </SafeArea>
 
 </template>
-<script lang="ts" setup>import { onMounted, ref } from 'vue';
-import { IProduct } from '~~/models/product';
+<script lang="ts" setup>
+import {onMounted, ref} from 'vue';
+import {IProduct} from '~~/models/product';
 import FavoriteService from '@/services/favorites-service';
+import ProductList from "~/entities/product/ui/product-list.vue";
+import {ICollection} from "~/models/collection";
 
-const products = ref<IProduct[]>([]);
+const products = ref<IProduct[] | ICollection[]>([]);
+const isLoading = ref<boolean>(false);
 
-onMounted(() => {
+onMounted(async () => {
+  isLoading.value = true;
+  try {
     products.value = FavoriteService.getAllFavorites();
+  } catch (e) {
+    console.log(e);
+  } finally {
+    isLoading.value = false;
+  }
+
 });
 
 </script>

@@ -55,7 +55,7 @@ export class ApiService {
     }
 
     async patch<T>(url: string, data: any) {
-        return (await this.axiosAPI.patch<T>(url, data = data)).data
+        return (await this.axiosAPI.patch<T>(url, data)).data
     }
 }
 

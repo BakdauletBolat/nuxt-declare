@@ -1,15 +1,11 @@
-<style>
-</style>
 <template>
-  <div class="border h-full relative border-primary border-l-0">
+  <div class="border h-full relative border-primary border-l-0 product-card">
     <div class="product-card-header absolute flex justify-between w-full items-center pt-[20px] px-[20px]">
       <div
           class="px-[12px] py-[3.5px] inline-block text-white bg-[#E4ABC7] rounded-2xl text-sm md:text-lg font-normal">
         -20 %
       </div>
-      <div class="inline-block cursor-pointer" @click="like()">
-        <Heart width="26" height="24" :color="isLiked ? 'red' : '#27213D80'"></Heart>
-      </div>
+      <Heart :product="product"></Heart>
     </div>
     <NuxtLink :to="{
             name: 'product-id',
@@ -22,7 +18,7 @@
              :src="product.picture.data.attributes.url" alt="">
       </div>
     </NuxtLink>
-    <div class="product-footer text-sm md:text-base lg:pt-[24px] pt-[20px] lg:pb-[96px] pb-[66px]">
+    <section class="product-footer text-sm md:text-base lg:pt-[24px] pt-[20px] lg:pb-[96px] pb-[66px]">
       <NuxtLink :to="{
                 name: 'product-id',
                 params: {
@@ -35,31 +31,19 @@
         <div class="text-[#636363] pr-3 line-through">{{ product.attributes.price }} ₸</div>
         <div>{{ product.attributes.old_price }} ₸</div>
       </div>
+    </section>
+    <div class="absolute flex right-[20px] bottom-[20px]">
+      <basket :product="product"></basket>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import Heart from "assets/icons/heart.vue";
 import {defineProps} from 'vue';
+import Heart from '@/entities/product/ui/heart.vue';
 import {IProduct} from "~/models/product";
-import FavoriteService from '@/services/favorites-service';
-import {onMounted, ref} from "vue";
-
-const isLiked = ref(false);
+import Basket from "@/entities/product/ui/basket.vue";
 
 const props = defineProps<{
   product: IProduct
-}>()
-
-const like = () => {
-  const value: boolean = FavoriteService.like(props.product);
-  isLiked.value = value;
-}
-
-onMounted(() => {
-  const value: boolean = FavoriteService.checkLiked(props.product);
-  isLiked.value = value;
-});
-
-
+}>();
 </script>
