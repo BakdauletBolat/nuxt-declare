@@ -15,7 +15,7 @@
           <div class="text-[16px] text-[#202020]">{{ option.title }}</div>
           <div class="text-[12px] text-[#525252] mt-[8px]">{{ option.description }}</div>
         </div>
-        <div class="text-[16px] text-[#202020]">{{ option.trailing }}</div>
+        <div class="text-[16px] text-[#202020] flex-shrink-0">{{ option.trailing }}</div>
       </div>
     </div>
   </div>

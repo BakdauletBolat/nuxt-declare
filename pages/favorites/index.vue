@@ -1,5 +1,6 @@
 <template>
   <SafeArea>
+    <PageTitleUi title="Список желаний"></PageTitleUi>
     <ProductList v-if="products" :is-loading="isLoading" :products="products"></ProductList>
   </SafeArea>
 

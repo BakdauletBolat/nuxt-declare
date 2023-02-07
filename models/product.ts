@@ -104,6 +104,7 @@ export interface ICover extends JsonApi {
 
 export interface ISizeGroup extends JsonApi {
     attributes: {
+        product_id: number;
         size: string;
     }
 }

@@ -17,7 +17,7 @@
         Тест инфо фы фы вф вф ыв фв фыв фы вфы вф ывф
       </template>
     </InfoText>
-    <GroupButton class="mt-[48px]" :activeId="activeId" @onChange="selectSize"></GroupButton>
+    <GroupButton v-if="product.size_group.data" :size-group="product.size_group.data" :product-id="product.id" class="mt-[48px]"></GroupButton>
     <p class="uppercase text-base mt-[28px] text-[#27213DB2]">РУКОВОДСТВО ПО РАЗМЕРАМ</p>
     <Button :is-loading="isLoading"
             class="lg:mt-[48px] mt-[32px] uppercase"
@@ -107,9 +107,4 @@ const addToCard = async () => {
   cardStore.openModal();
 }
 
-const activeId = ref(1);
-
-const selectSize = (value: any) => {
-  activeId.value = value.id;
-}
 </script>
