@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99e1d6d8-67f5-47bb-83c5-085aa25562cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/ui/payment-select.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/order/model/interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/order/model/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities/order/service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/create-order/ui/navigator.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Product/Detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Product/Detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/GroupButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/GroupButton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/delivery-select/ui.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/delivery-select/ui.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/user-contact-create/ui/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/user-contact-create/ui/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/address/ui/address-item.vue" beforeDir="false" afterPath="$PROJECT_DIR$/entities/address/ui/address-item.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/address/ui/address-select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/entities/address/ui/address-select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/create-order.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/create-order.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/create-order/checkout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/create-order/checkout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/create-order/delivery-step.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/create-order/delivery-step.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/create-order/ui/steps.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/create-order/ui/steps.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/favorites/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/favorites/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/order-detail/ui/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/widgets/order-detail/ui/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +98,8 @@
       <workItem from="1675497169912" duration="25711000" />
       <workItem from="1675659028486" duration="676000" />
       <workItem from="1675664802340" duration="15544000" />
-      <workItem from="1675689493192" duration="11745000" />
+      <workItem from="1675689493192" duration="13857000" />
+      <workItem from="1675762342955" duration="715000" />
     </task>
     <servers />
   </component>

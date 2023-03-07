@@ -8,11 +8,11 @@
 <script lang="ts" setup>
 import userStore from "~/stores/userStore";
 import Spinner from "~/components/ui/Spinner.vue";
-import {useLocalStorage} from "#imports";
+import { useLocalStorage } from "#imports";
 import cardStore from "~/entities/card/model/store";
 
 const loadStartUpData = async () => {
-  const token = await useLocalStorage('token', undefined).value
+  const token = useLocalStorage('token', undefined).value
   if (token != 'undefined') {
     try {
       await userStore.loadUser();

@@ -29,7 +29,7 @@ const addressCreateStore = useAddressCreateStore();
 
 onMounted(async () => {
   await addressCreateStore.loadCities();
-  addressCreateStore.city_value.value = {
+  addressCreateStore.city_value = {
     title: addressCreateStore.cities[0].attributes.name,
     id: addressCreateStore.cities[0].id
   };

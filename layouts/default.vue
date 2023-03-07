@@ -20,14 +20,12 @@
            :open="cardStore.isOpenModal"
            @handle-cancel="cardStore.closeModal">
       <CardModal></CardModal>
-
     </Modal>
     <UserLoading>
       <slot></slot>
     </UserLoading>
     <MailingForm></MailingForm>
     <FooterVue></FooterVue>
-
   </div>
 </template>
 <script lang="ts" setup>
