@@ -8,16 +8,16 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install app dependencies
-RUN npm install
+RUN yarn install
 
 # Copy the rest of the application code to the container
 COPY . .
 
 # Build the Nuxt.js application
-RUN npm run build
+RUN yarn build
 
 # Expose port 3000 for the Nuxt.js application to listen on
 EXPOSE 3000
 
 # Run the Nuxt.js application in production mode
-CMD ["npm", "run", "start"]
+CMD ["yarn", "start"]
