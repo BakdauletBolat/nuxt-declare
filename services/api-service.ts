@@ -1,12 +1,15 @@
 import axios from 'axios';
-import {useLocalStorage} from "#imports";
+import { useLocalStorage } from "#imports";
 
 export class ApiService {
 
     axiosAPI = axios.create({
-            baseURL: 'http://37.99.54.122:9992/api/v1',
-            timeout: 10000,
+        baseURL: 'http://37.99.54.122:9992/api/v1',
+        timeout: 10000,
+        headers: {
+            'Accept-Language': 'ru'
         }
+    }
     )
 
     constructor() {
