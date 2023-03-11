@@ -40,7 +40,7 @@
 <script setup lang="ts">
 import {defineProps} from 'vue';
 import Heart from '@/entities/product/ui/heart.vue';
-import {IProduct} from "~/models/product";
+import {IProduct} from "@/models/product";
 import Basket from "@/entities/product/ui/basket.vue";
 
 const props = defineProps<{
