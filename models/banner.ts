@@ -12,7 +12,7 @@ export interface IBanner extends JsonApi {
         title: string;
         description: string;
     }
-    picture: {
+    picture?: {
         data: IPicture;
     }
 }

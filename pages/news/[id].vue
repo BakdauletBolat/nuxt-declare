@@ -3,7 +3,7 @@
     <Breadcrumb :back-title="'Назад'" :options="options"></Breadcrumb>
     <NewsSkeleton class="px-[20px]" v-if="isLoading"></NewsSkeleton>
     <div v-if="newsStore.news.data" class="container mx-auto px-[15px]">
-      <img class="w-full lg:h-[620px] h-[200px]"
+      <img class="w-full lg:h-[620px] object-cover h-[200px]"
            :alt="newsStore.news?.data.attributes?.title"
            :src="newsStore.news?.data.picture?.data.attributes.url"/>
       <div class="mt-[28px] text-[#525252] text-center text-[16px]">26 АВГУСТА 2022 ГОДА</div>
@@ -30,7 +30,7 @@ const loadNews = async () => {
     await newsStore.loadNews(parseInt(route.params.id.toString()));
     options.value.push({
       title: newsStore.news!.data!.attributes?.title
-    })
+    });
   } catch (e) {
     console.log(e)
     notify({

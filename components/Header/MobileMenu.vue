@@ -39,6 +39,7 @@ const navigateBack = () => {
 }
 const navigateNext = (category: ICategory) => {
   headerStore.nextPage(headerStore.currentStep + 1, category.children.data, category);
+  console.log(headerStore.activeCategory?.attributes.name);
 }
 </script>
 

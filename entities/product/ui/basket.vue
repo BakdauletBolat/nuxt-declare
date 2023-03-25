@@ -17,7 +17,7 @@
             class="lg:mt-[48px] hidden lg:block mt-[32px] uppercase px-[15px]"
             :type-button="isInCard ? 'bordered': 'primary'"
             @click="addToCard">
-      {{ isInCard ? 'В корзину' : 'ДОБАВИТЬ В КОРЗИНУ' }}
+      {{ isInCard ? 'Перейти в корзину' : 'ДОБАВИТЬ В КОРЗИНУ' }}
     </Button>
   </div>
   <div class="lg:hidden cursor-pointer" @click="addToCard">

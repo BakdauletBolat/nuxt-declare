@@ -26,7 +26,6 @@ const pagination = {
     <SafeArea>
     <HomeMainSliderSkeleton v-if="isLoading"></HomeMainSliderSkeleton>
     <swiper v-else class="h-[588px]" :modules="modules" :pagination="pagination" :slides-per-view="1">
-        
         <swiper-slide v-for="item in data?.data">
             <HomeMainSliderItemVue :item="item"></HomeMainSliderItemVue>
         </swiper-slide>

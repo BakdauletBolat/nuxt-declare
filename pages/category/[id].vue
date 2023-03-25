@@ -4,9 +4,10 @@
     <Breadcrumb :centered="true" :options="options"></Breadcrumb>
     <ProductFilterHeader></ProductFilterHeader>
     <ProductList :is-loading="productStore.isLoadingProducts"
-                 :products="productStore.productsData.data"></ProductList>
+                 :products="productStore.productsData.data as IProduct[] | ICollection[]"></ProductList>
   </SafeArea>
 </template>
+
 <script lang="ts" setup>
 import {onMounted, ref} from 'vue';
 import Breadcrumb from '~~/components/ui/Breadcrumb.vue';
@@ -16,6 +17,8 @@ import {ICategory} from '~~/models/category';
 import categoryService from '~~/services/category-service';
 import {useRoute, useRouter} from 'vue-router';
 import ProductList from "~/entities/product/ui/product-list.vue";
+import { IProduct } from '~~/models/product';
+import { ICollection } from '~~/models/collection';
 
 
 const productStore = useProductStore();
@@ -39,7 +42,7 @@ const loadProducts = async () => {
   const filtersData = productStore.submitFilters();
   await router.replace(
       {
-        query: Object.assign({}, filtersData)
+        query: Object.assign(route.query, filtersData)
       }
   )
   await loadActiveCategory();
@@ -52,9 +55,9 @@ const loadProducts = async () => {
     title: headerStore.activeCategory?.attributes.name
   });
 }
-onMounted(() => {
-  loadProducts();
-  productStore.loadFilters(parseInt(route.params!.id!.toString()));
+onMounted(async () => {
+  await loadProducts();
+  productStore.loadFilters(headerStore.activeCategory!);
 });
 
 </script>

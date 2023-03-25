@@ -22,7 +22,7 @@ const props = defineProps<{
   item: IBanner
 }>();
 
-const url = `bg-[url('${props.item.picture.data.attributes.url}')]`
+const url = `bg-[url('${props.item.picture?.data.attributes.url}')]`
 
 </script>
 <style>

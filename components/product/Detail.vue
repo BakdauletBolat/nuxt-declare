@@ -7,22 +7,22 @@
       {{ product.attributes.price }} ₸
       <span class="text-base text-[#878787] line-through">{{ product.attributes.old_price }} ₸</span>
     </div>
-    <InfoText class="lg:mt-[28px] mt-[24px] text-base">В рассрочку от 5 990 ₸/мес
+    <!-- <InfoText class="lg:mt-[28px] mt-[24px] text-base">В рассрочку от 5 990 ₸/мес
       <template v-slot:info-text>
         Тест инфо
       </template>
-    </InfoText>
-    <InfoText class="mt-[16px]">До +7 654 БТ за покупку
+    </InfoText> -->
+    <!-- <InfoText class="mt-[16px]">До +7 654 БТ за покупку
       <template v-slot:info-text>
         Тест инфо фы фы вф вф ыв фв фыв фы вфы вф ывф
       </template>
-    </InfoText>
+    </InfoText> -->
     <GroupButton v-if="product.size_group.data" :size-group="product.size_group.data" :product-id="product.id" class="mt-[48px]"></GroupButton>
     <p class="uppercase text-base mt-[28px] text-[#27213DB2]">РУКОВОДСТВО ПО РАЗМЕРАМ</p>
     <Button :is-loading="isLoading"
             class="lg:mt-[48px] mt-[32px] uppercase"
             :type-button="isInCard ? 'bordered': 'primary'"
-            @click="addToCard">{{ isInCard ? 'В корзину' : 'ДОБАВИТЬ В КОРЗИНУ' }}
+            @click="addToCard">{{ isInCard ? 'Перейти в корзину' : 'ДОБАВИТЬ В КОРЗИНУ' }}
     </Button>
     <Button class="mt-[9px]" typeButton="secondary">КУПИТЬ В 1 КЛИК <span><img :src="RightArrow" alt=""></span></Button>
     <Accordion>

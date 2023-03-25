@@ -17,41 +17,40 @@ export const useHeaderStore = defineStore('header', () => {
     const categories = ref<any>([]);
     const currentStep = ref<number>(0);
     const categoriesMenu = ref<{ [key: string]: ICategoryMenu[] } | undefined>(undefined);
-    const activeCategory = ref<ICategory | undefined>({
-        id: 1,
-        object: 'Category',
-        attributes: {
-            name: 'Default',
-            slug: 'Degault'
-        },
-        children: {
-            data: []
-        }
-    });
+    const activeCategory = ref<ICategory | undefined>();
 
 
     const loadCategories = async ({}: any) => {
         categories.value[0] = (await CategoryService.getCategories()).data;
     }
 
-    const loadCategoriesMenu = async () => {
-        isLoadingCategoriesMenu.value = true;
-        const menu_list: ICategoryMenu[] = (await CategoryService.getCategoriesMenu(activeCategory.value!.id)).data;
-        categoriesMenu.value = lodash.groupBy(menu_list, (menu: ICategoryMenu) => {
-            return menu.attributes.type;
-        });
-        isLoadingCategoriesMenu.value = false;
+    const loadCategoriesMenu = () => {
+        if (activeCategory.value != undefined || activeCategory.value != null) {
+            const menu_list: ICategoryMenu[] = activeCategory.value!.menus.data;
+            categoriesMenu.value = lodash.groupBy(menu_list, (menu: ICategoryMenu) => {
+                return menu.attributes.type;
+            });
+        }
+        else {
+            categoriesMenu.value = undefined;
+        }
     }
 
     const nextPage = async (nextPage: number, nextPageChildren: ICategory[], activeCategoryData: ICategory) => {
         categories.value[nextPage] = nextPageChildren;
-        activeCategory.value = activeCategoryData;
+        if (nextPageChildren.length > 0) {
+            activeCategory.value = nextPageChildren[0];
+        } 
+        else {
+            activeCategory.value = activeCategoryData;
+        }
         currentStep.value = nextPage;
-        await loadCategoriesMenu();
+        loadCategoriesMenu();
     }
 
     const onBack = () => {
         currentStep.value -= 1;
+        activeCategory.value = categories.value[currentStep.value][0]
     }
 
     const changeIsOpenBurger = (value: boolean) => {

@@ -14,7 +14,7 @@
       <div class="container gap-[60px] mx-auto flex">
         <div @click="closeMenu" class="absolute cursor-pointer right-[15px] top-[20px]"><img src="@/assets/icons/exit.svg" alt=""></div>
         <div class="w-[240px] border-r my-[20px]">
-          <Recurcive :depth="1" :items="headerStore.categories[headerStore.currentStep]"></Recurcive>
+          <CategoryChildren :items="headerStore.categories[headerStore.currentStep]"></CategoryChildren>
         </div>
         <CategoryMenu class="my-[20px]"></CategoryMenu>
       </div>
@@ -23,13 +23,12 @@
 <script lang="ts" setup>
 import {useHeaderStore} from "@/stores/headerStore";
 import CategoryMenu from "~/components/Header/CategoryMenu.vue";
-import Recurcive from '@/components/Header/Recurcive.vue';
+import CategoryChildren from "@/entities/category/ui/category-children.vue";
 
 const headerStore = useHeaderStore();
 
 const closeMenu = () => {
   headerStore.currentStep = 0;
-  headerStore.activeCategory = undefined;
 }
 
 </script>

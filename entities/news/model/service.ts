@@ -12,7 +12,7 @@ class NewsService extends ApiService {
         return await this.get<{
             data: INews[]
         }>('/news/',{
-            page: page
+            page: page,
         },['picture'])
     }
 }

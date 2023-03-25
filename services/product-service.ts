@@ -13,6 +13,10 @@ class ProductService extends ApiService {
         return (await this.get<IProductData>('/products', filter, ['picture', 'pictures']));
     }
 
+    async getProductRecommendations(pk: number, filter?: object,) {
+        return (await this.get<IProductData>(`/recommendations/products/${pk}`, filter, ['picture', 'pictures']));
+    }
+
     async getProduct(id: string | string[]) {
         const data = (await this.get<IProductSingleData>(`/products/${id}`, {},
             ['pictures',

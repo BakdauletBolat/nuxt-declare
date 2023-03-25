@@ -2,7 +2,7 @@
   <div class="border-b-[#E0E0E0] border-b py-[48px]">
     <div class="grid gap-[40px] lg:grid-cols-2 w-full container mx-auto px-[15px]">
       <section class="w-full h-[380px] border border-[#E0E0E0]">
-        <img :alt="item.attributes.title" class="w-full h-full" :src="item.picture?.data.attributes?.url"/>
+        <img :alt="item.attributes.title" class="w-full h-full object-cover" :src="item.picture?.data.attributes?.url"/>
       </section>
       <section class="flex flex-col justify-between items-center">
         <div class="uppercase text-[18px] text-[#878787] text-center">26 августа 2022 года</div>

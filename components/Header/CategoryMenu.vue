@@ -4,14 +4,17 @@
     <div v-for="(items, key) in headerStore.categoriesMenu">
       <div class="text-base text-[#C7C7C7] py-[10px]">{{ key }}</div>
       <div v-if="items" class="py-[10px] text-base" v-for="item in items">
-        <NuxtLink @click="()=>{
-          headerStore.changeIsOpenBurger(false);
-          headerStore.currentStep = 0;
-        }" :to="{
+        <NuxtLink class="cursor-pointer" :to="{
           name: 'category-id',
           params: {
             id: headerStore.activeCategory?.id
+          },
+          query: {
+            [item.attributes.entity]: item.attributes.entity_id
           }
+        }" @click="()=>{
+          headerStore.changeIsOpenBurger(false);
+          headerStore.currentStep = 0;
         }">{{ item.attributes.name }}</NuxtLink>
       </div>
     </div>
@@ -23,6 +26,5 @@
 <script setup lang="ts">
 import {useHeaderStore} from "~/stores/headerStore";
 import MobileMenuSkeleton from "~/components/Header/MobileMenuSkeleton.vue";
-
 const headerStore = useHeaderStore();
 </script>

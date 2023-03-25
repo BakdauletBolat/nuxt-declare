@@ -19,6 +19,6 @@ import ProductSkeleton from "@/entities/product/ui/product-skeleton.vue";
 
 defineProps<{
   isLoading: boolean,
-  products: IProduct | ICollection[]
+  products: IProduct[] | ICollection[]
 }>();
 </script>

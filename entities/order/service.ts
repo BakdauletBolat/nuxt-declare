@@ -7,7 +7,11 @@ class OrderService extends ApiService {
             data: {
                 link: string
             }
-        }>('', data);
+        }>('/order', data);
+    }
+
+    async getOrders() {
+        return await this.get('/orders', {}, ['statuses']);
     }
 }
 

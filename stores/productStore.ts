@@ -1,11 +1,10 @@
 import {defineStore} from "pinia";
-import productService from "~/services/product-service";
-import {IMeta, IProduct} from "~~/models/product";
+import productService from "@/services/product-service";
+import {IMeta, IProduct} from "@/models/product";
 import {ref} from 'vue';
-import {ICollection} from "~~/models/collection";
+import {ICollection} from "@/models/collection";
 import collectionService from "~~/services/collection-service";
-import categoryService from "~~/services/category-service";
-import {ICategoryMenu} from "~~/models/category";
+import {ICategory, ICategoryMenu} from "@/models/category";
 import lodash from "lodash";
 
 export const useProductStore = defineStore('product-store', () => {
@@ -16,6 +15,11 @@ export const useProductStore = defineStore('product-store', () => {
     }>({
         data: []
     });
+
+    const productRecommendations = ref<IProduct[]>([]);
+
+    const isLoadingProductRecommendations = ref<boolean>(false);
+
     const page = ref<number>(1);
     const isLoadingProducts = ref<boolean>(true);
     const isLoadingMore = ref<boolean>(false);
@@ -38,9 +42,6 @@ export const useProductStore = defineStore('product-store', () => {
                 }
             })
         });
-
-
-
         return filtersData;
     };
 
@@ -51,8 +52,8 @@ export const useProductStore = defineStore('product-store', () => {
         }
     }
 
-    const loadFilters = async (id: number) => {
-        const menu_list: ICategoryMenu[] = (await categoryService.getCategoriesMenu(id)).data;
+    const loadFilters = async (category: ICategory) => {
+        const menu_list: ICategoryMenu[] = category.menus.data;
         filters.value = lodash.groupBy(menu_list, (menu: ICategoryMenu) => {
             return menu.attributes.type;
         });
@@ -95,6 +96,20 @@ export const useProductStore = defineStore('product-store', () => {
         isLoadingProducts.value = false;
     }
 
+    const loadProductRecommendations = async (pk:number) => {
+        isLoadingProductRecommendations.value = true;
+        try {
+            productRecommendations.value = (await productService.getProductRecommendations(pk)).data;
+        }
+        catch (e) {
+            console.log(e);
+        }
+        finally {
+            isLoadingProductRecommendations.value = false;
+        }
+       
+    }
+
     const loadMoreProducts = async (page: number = 1) => {
         isLoadingMore.value = true;
         const productsNew: IProduct[] = (await productService.getProducts({
@@ -117,6 +132,8 @@ export const useProductStore = defineStore('product-store', () => {
         isLoadingProducts,
         isLastPage,
         productsData,
+        productRecommendations,
+        isLoadingProductRecommendations,
         page,
         filters,
         loadFilters,
@@ -125,6 +142,7 @@ export const useProductStore = defineStore('product-store', () => {
         setActiveFilterItem,
         submitFilters,
         loadMoreProducts,
+        loadProductRecommendations
     }
 
 });

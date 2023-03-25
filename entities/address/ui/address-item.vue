@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col lg:flex-row gap-[16px] items-start justify-between address-item" v-if="item">
-      <div>г. {{item?.city?.data.attributes.name}}, ул. {{item?.attributes.street}} д. {{item.attributes.house}} {{item.attributes.apartment}}</div>
+      <div>{{ item.city?.data.id }} г. {{item?.city?.data.attributes.name}}, ул. {{item?.attributes.street}} д. {{item.attributes.house}} {{item.attributes.apartment}}</div>
       <NuxtLink :to="{
           name: 'profile-my-addresses-id',
           params: {

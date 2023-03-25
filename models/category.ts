@@ -22,6 +22,9 @@ export interface ICategory extends JsonApi {
     children: {
         data: ICategory[]
     }
+    menus: {
+        data: ICategoryMenu[]
+    }
 }
 
 export interface ICategoryData {

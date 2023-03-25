@@ -56,20 +56,20 @@ const navigateBack = () => {
 
 export interface IBreadcrump {
   title: string;
-  to: string | {
+  to?: string | {
     name: string;
     params: any
-  } | undefined;
+  };
 }
 
 defineProps<{
-  centered?: boolean,
-  options?: IBreadcrump[],
+  centered?: boolean;
+  options?: IBreadcrump[];
   backTitle?: string;
   backLink?: string | {
     name: string;
     params: any;
-  }
+  };
 }>();
 
 </script>

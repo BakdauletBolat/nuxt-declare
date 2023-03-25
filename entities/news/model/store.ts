@@ -1,10 +1,12 @@
 import {defineStore} from "pinia";
 import {INews} from "~/entities/news/model/interface";
+import { IMeta } from "~~/models/models";
 import NewsService from './service';
 
 const useNewsStore = defineStore('news-store', () => {
     const newsList = ref<{
-        data: INews[]
+        data: INews[],
+        meta?: IMeta
     }>({
         data: []
     });

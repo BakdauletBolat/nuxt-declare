@@ -3,6 +3,20 @@
     <div class="container mx-auto px-[15px]">
       <Breadcrumb :options="options"></Breadcrumb>
       <NewsList :is-loading="isLoadingNewsList" v-if="newsStore.newsList?.data" :items="newsStore.newsList.data"></NewsList>
+      <div class="flex justify-center mt-[50px] items-center" >
+        <NuxtLink v-if="newsStore.newsList.meta" v-for="item in newsStore.newsList.meta!.pagination.total_pages" 
+        :class="{
+          '!text-black': newsStore.newsList.meta.pagination.current_page == item
+        }"
+        class="px-[20px] py-[10px] text-[#938F9E] text-[18px] border-r-[#E4ABC780] border-r" 
+        
+        :to="{
+          name: 'news',
+          query: {
+            page: item
+          }
+        }">{{ item }}</NuxtLink>
+      </div>
     </div>
   </SafeArea>
 </template>
@@ -14,10 +28,23 @@ import {notify} from "@kyvg/vue3-notification";
 
 const isLoadingNewsList = ref(false);
 
+
+const route = useRoute();
+
+watch(route, ()=>{
+  console.log(route.query);
+  if (route.query.page != undefined) {
+    newsStore.loadNewsList(parseInt(route.query.page!.toString()));
+  }
+});
+
 onMounted(async () => {
   isLoadingNewsList.value = true;
   try {
-    await newsStore.loadNewsList();
+    if (route.query.page != undefined) {
+      await newsStore.loadNewsList(parseInt(route.query.page!.toString()));
+    }
+
   } catch (e) {
     console.log(e);
     notify({

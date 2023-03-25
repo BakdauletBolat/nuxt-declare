@@ -18,3 +18,13 @@ export interface IPicture extends JsonApi {
     }
 }
 
+export interface IMeta {
+    pagination: {
+        count: number;
+        current_page: number;
+        per_page: number;
+        total: number;
+        total_pages: number;
+    }
+}
+

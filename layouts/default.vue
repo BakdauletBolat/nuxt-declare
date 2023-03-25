@@ -24,7 +24,7 @@
     <UserLoading>
       <slot></slot>
     </UserLoading>
-    <MailingForm></MailingForm>
+    <!-- <MailingForm></MailingForm> -->
     <FooterVue></FooterVue>
   </div>
 </template>
@@ -33,7 +33,7 @@
 import {onUnmounted, onMounted} from 'vue';
 import {useHeaderStore} from "~/stores/headerStore";
 import FooterVue from '@/components/Footer/Footer.vue';
-import Header from '@/components/Header.vue';
+import Header from '@/components/Header/ui.vue';
 import MailingForm from '@/components/ui/MailingForm.vue';
 import cardStore from '@/entities/card/model/store';
 import Modal from '@/components/ui/Modal.vue';

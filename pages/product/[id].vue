@@ -111,9 +111,10 @@
             </div>
           </div>
         </div>
-    
+        <h3 class="lg:text-[32px] text-[21px] text-[#202020] text-center lg:my-[52px] my-[35px]">ДОПОЛНИТЕ СВОЙ ОБРАЗ</h3>
+        <ProductSliderList :is-loading="productStore.isLoadingProductRecommendations" :items="productStore.productRecommendations"></ProductSliderList>
         <ProductDetailSkeleton v-if="loading"></ProductDetailSkeleton>
-      
+        
   </SafeArea>
 </template>
 
@@ -130,6 +131,9 @@ import FeatureItem from '@/components/ui/FeatureItem.vue';
 import productService from '~~/services/product-service';
 import { useRoute } from 'vue-router';
 import { IProduct } from '~~/models/product';
+import ProductList from '@/entities/product/ui/product-list.vue';
+import { useProductStore } from '@/stores/productStore';
+import ProductSliderList from '~~/entities/product/ui/product-slider-list.vue';
 
 const thumbsSwiper = ref<SwiperRef | null>(null);
 const mainSlider = ref<SwiperRef | null>(null);
@@ -176,8 +180,13 @@ const getProduct = async () => {
     to: ''
   });
   loading.value = false;
+  productStore.loadProductRecommendations(data.id);
 }
+
+const productStore = useProductStore();
+
 onMounted(() => {
   getProduct(); 
+  
 })
 </script>

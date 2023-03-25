@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-[15px] lg:mt-[20px]">
+  <div class="container mx-auto px-[15px]  mt-[20px]">
     <nav class="lg:hidden">
       <profile-nav-list></profile-nav-list>
     </nav>

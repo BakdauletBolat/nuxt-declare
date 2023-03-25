@@ -53,12 +53,12 @@ const itemsToRender: INavListItem[] = props.items ? props.items : [
       name: 'profile-change-password'
     }
   },
-  {
-    title: 'НОВОСТНАЯ РАССЫЛКА',
-    to: {
-      name: 'profile-push-news'
-    }
-  }
+  // {
+  //   title: 'НОВОСТНАЯ РАССЫЛКА',
+  //   to: {
+  //     name: 'profile-push-news'
+  //   }
+  // }
 ];
 
 interface INavListItem {
