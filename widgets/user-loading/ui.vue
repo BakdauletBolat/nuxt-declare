@@ -2,7 +2,7 @@
   <div v-if="userStore.isLoadingUser" class="h-screen w-full flex items-center justify-center">
     <Spinner :color="'#27213D'"></Spinner>
   </div>
-  <slot v-else>
+  <slot>
   </slot>
 </template>
 <script lang="ts" setup>

@@ -3,7 +3,9 @@
 </template>
 <script lang="ts" setup>
 import Button from "~/components/ui/Button.vue";
-import {useRoute} from "vue-router";
+import { useRoute } from "vue-router";
+import { validate_delivery_step } from "../model/service";
+
 
 const route = useRoute();
 
@@ -14,9 +16,12 @@ const navigator = () => {
     })
   }
   if (route.name === 'create-order-delivery-step') {
-    navigateTo({
-      name: 'create-order-checkout'
-    })
+    const isValid = validate_delivery_step();
+    if (isValid) {
+      navigateTo({
+        name: 'create-order-checkout'
+      })
+    }
   }
 }
 

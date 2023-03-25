@@ -22,6 +22,7 @@
 </template>
 <script lang="ts" setup>
 import {useRoute} from "vue-router";
+import { validate_delivery_step } from "../model/service";
 
 const route = useRoute();
 const activeRoute = ref();
