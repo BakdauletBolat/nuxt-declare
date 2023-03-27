@@ -11,9 +11,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-import createOrderStore from '@/entities/order/model/store';
+import {useCreateOrderStore} from '@/entities/order/model/store';
 import TextInput from "~/components/ui/inputs/text-input.vue";
 import {useForm} from "vee-validate";
+
+const createOrderStore = useCreateOrderStore();
 
 const emit = defineEmits(['submit']);
 const {handleSubmit} = useForm();

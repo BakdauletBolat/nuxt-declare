@@ -24,7 +24,9 @@ import Steps from "~/pages/create-order/ui/steps.vue";
 import OrderDetail from '@/widgets/order-detail/ui/index.vue';
 import Navigator from "~/pages/create-order/ui/navigator.vue";
 import userStore from "~/stores/userStore";
-import createOrderStore from '@/entities/order/model/store';
+import {useCreateOrderStore} from '@/entities/order/model/store';
+
+const createOrderStore = useCreateOrderStore();
 
 onMounted(() => {
   if (userStore.user) {

@@ -5,9 +5,11 @@
 import Button from "~/components/ui/Button.vue";
 import { useRoute } from "vue-router";
 import { validate_delivery_step } from "../model/service";
-import orderCreateStore from '@/entities/order/model/store'
+import {useCreateOrderStore} from '@/entities/order/model/store'
 
 const route = useRoute();
+
+const createOrderStore =useCreateOrderStore();
 
 const navigator = async () => {
   if (route.name === 'create-order') {
@@ -28,7 +30,7 @@ const navigator = async () => {
 
   if (route.name === 'create-order-checkout') {
     try {
-      await orderCreateStore.createOrder();
+      await createOrderStore.createOrder();
       navigateTo({
         name: 'success'
       });

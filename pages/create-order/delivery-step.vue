@@ -30,7 +30,9 @@ import DeliverySelect from '@/components/ui/delivery-select/ui.vue';
 import AddressSelect from "~/entities/address/ui/address-select.vue";
 import {useAddressStore} from "~/entities/address/model/store";
 import Button from "~/components/ui/Button.vue";
-import createOrderStore from "~/entities/order/model/store";
+import {useCreateOrderStore} from "~/entities/order/model/store";
+
+const createOrderStore = useCreateOrderStore();
 
 const addressStore = useAddressStore();
 onMounted(() => {

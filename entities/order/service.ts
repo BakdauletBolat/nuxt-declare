@@ -1,5 +1,5 @@
 import {ApiService} from "~/services/api-service";
-import {ICreateOrder} from "~/entities/order/model/interface";
+import {ICreateOrder, IOrder} from "@/entities/order/model/interface";
 
 class OrderService extends ApiService {
     async createOrder(data: ICreateOrder) {
@@ -10,8 +10,10 @@ class OrderService extends ApiService {
         }>('/order', data);
     }
 
-    async getOrders() {
-        return await this.get('/orders', {}, ['statuses']);
+    async getOrders(filter:object) {
+        return await this.get<{
+            data: IOrder[]
+        }>('/orders', filter, ['statuses','positions']);
     }
 }
 

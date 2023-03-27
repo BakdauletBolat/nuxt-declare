@@ -1,13 +1,9 @@
 <template>
-  <div>
-    My Orders
+  <div class="container mx-auto px-[15px] pt-[20px]">
+    <OrderHeaderFilter></OrderHeaderFilter>
+    <OrderList></OrderList>
   </div>
 </template>
 <script lang="ts" setup>
-import service from '@/entities/order/service';
-
-onMounted(async ()=>{
-  const res = await service.getOrders();
-  console.log(res);
-})
+import OrderHeaderFilter from '@/components/order-header-filter/ui.vue';
 </script>

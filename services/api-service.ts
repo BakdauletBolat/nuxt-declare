@@ -4,7 +4,7 @@ import { useLocalStorage } from "#imports";
 export class ApiService {
 
     axiosAPI = axios.create({
-        baseURL: 'http://clientauth-test.evrika.com/api/v1',
+        baseURL: 'https://clientauth-test.evrika.com/api/v1',
         timeout: 10000,
         headers: {
             'Accept-Language': 'ru'

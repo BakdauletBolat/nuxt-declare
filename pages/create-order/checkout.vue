@@ -17,8 +17,10 @@
 
 </template>
 <script lang="ts" setup>
-import createOrderStore from '@/entities/order/model/store';
+import {useCreateOrderStore} from '@/entities/order/model/store';
 import UserContact from '@/entities/user/ui/contact.vue';
 import AddressItem from "~/entities/address/ui/address-item.vue";
 import PaymentSelect from "~/components/ui/payment-select.vue";
+
+const createOrderStore = useCreateOrderStore();
 </script>

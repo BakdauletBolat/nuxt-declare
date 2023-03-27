@@ -25,13 +25,13 @@
           }">
             <UserIcon color="black"></UserIcon>
           </NuxtLink>
-          <NuxtLink :to="{
+          <NuxtLink class="pl-[17px]" :to="{
             name: 'favorites'
           }">
-            <HeartIcon width="20" height="18" class="ml-[17px]" color="black"></HeartIcon>
+            <HeartIcon width="20" height="18" color="black"></HeartIcon>
           </NuxtLink>
-          <div @click="cardStore.openModal()" class="cursor-pointer">
-            <CardIcon width="20" height="18" class="ml-[17px]" color="black"></CardIcon>
+          <div @click="cardStore.openModal()" class="cursor-pointer pl-[17px]">
+            <CardIcon width="20" height="18"  color="black"></CardIcon>
           </div>
         </div>
         <MobileMenu v-if="headerStore.categories[headerStore.currentStep]"></MobileMenu>
