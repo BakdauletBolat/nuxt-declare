@@ -1,14 +1,15 @@
 <template>
-<div class="my-12 container text-[#343434] flex flex-col lg:flex-row lg:justify-between px-4 mx-auto">
-  <FooterMenuItem title="Declare" :items="itemsDeclare">
-  </FooterMenuItem>
-  <FooterMenuItem title="ИНФОРМАЦИЯ" :items="itemsInf">
-  </FooterMenuItem>
-  <FooterMenuItem title="ИЗДЕЛИЯ" :items="itemsS">
-  </FooterMenuItem>
-</div>
+  <div class="my-12 container text-[#343434] flex flex-col lg:flex-row lg:justify-between px-4 mx-auto">
+    <FooterMenuItem title="Declare" :items="itemsDeclare">
+    </FooterMenuItem>
+    <FooterMenuItem title="ИНФОРМАЦИЯ" :items="itemsInf">
+    </FooterMenuItem>
+    <FooterMenuItem title="ИЗДЕЛИЯ" :items="itemsS">
+    </FooterMenuItem>
+  </div>
   <div class="text-lg px-4 bg-[#27213D] ">
-    <div class="container text-white mx-auto space-y-10 py-14 flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:space-y-0">
+    <div
+      class="container text-white mx-auto space-y-10 py-14 flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:space-y-0">
       <div class="space-x-4 flex footer__icon items-center">
         <InstagramIcon></InstagramIcon>
         <TwitterIcon></TwitterIcon>
@@ -26,13 +27,14 @@
 </template>
 <style lang="scss">
 .footer__icon {
-    & svg {
+  & svg {
+    fill: white;
+
+    & path {
       fill: white;
-      & path {
-        fill:white;
-        stroke: white;
-      }
+      stroke: white;
     }
+  }
 }
 </style>
 <script lang="ts" setup>
@@ -46,7 +48,10 @@ const itemsDeclare = [
   {
     title: 'О компании',
     url: {
-      name: 'about'
+      name: 'page-slug',
+      params: {
+        slug: 'o_kompaniy'
+      }
     }
   },
   {
@@ -57,7 +62,9 @@ const itemsDeclare = [
   },
   {
     title: 'Контакты',
-    url: '/'
+    url: {
+      name: 'contacts'
+    }
   }
 ];
 const itemsInf = [
@@ -71,7 +78,12 @@ const itemsInf = [
   },
   {
     title: 'Доставка и оплата',
-    url: '/'
+    url: {
+      name: 'page-slug',
+      params: {
+        slug: 'dostavka_i_oplata'
+      }
+    }
   },
   {
     title: 'Статус заказа',
@@ -79,19 +91,39 @@ const itemsInf = [
   },
   {
     title: 'Возврат и обмен',
-    url: '/'
+    url: {
+      name: 'page-slug',
+      params: {
+        slug: 'vozvrat_i_obmen'
+      }
+    }
   },
   {
     title: 'Рассрочка',
-    url: '/'
+    url: {
+      name: 'page-slug',
+      params: {
+        slug: 'rassrochka'
+      }
+    }
   },
   {
     title: 'Уход за изделиями',
-    url: '/'
+    url: {
+      name: 'page-slug',
+      params: {
+        slug: 'ukhod_za_izdeliyami'
+      }
+    }
   },
   {
     title: 'Бонусная система',
-    url: '/'
+    url: {
+      name: 'page-slug',
+      params: {
+        slug: 'bonusnaya_sistema'
+      }
+    }
   }
 ];
 const itemsS = [
