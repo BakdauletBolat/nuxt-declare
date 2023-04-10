@@ -7,7 +7,9 @@
     <ProductSliderList :is-loading="homeStore.loadingSpecialPriceProducts"
                        :items="homeStore.specialPriceProducts"></ProductSliderList>
 
-    <div v-if="homeStore.lastCollection" class="bg-primary mt-20 bg-[url(@/assets/Banner.png)] bg-cover bg-no-repeat">
+    <div v-if="homeStore.lastCollection" class="bg-primary mt-20 bg-cover" :style="{
+        backgroundImage: `url(${homeStore.lastCollection.picture.data.attributes.url})`
+      }">
       <div class="text-white container flex mx-auto justify-center md:justify-end">
         <div class="md:pt-[100px] md:pr-10 md:pb-16 py-[84px] px-[30px]">
           <div class="text-[28px] uppercase">{{ homeStore.lastCollection?.attributes.title }}</div>
