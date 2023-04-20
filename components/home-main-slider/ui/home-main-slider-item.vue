@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[588px] w-full flex items-center" :style="{
+  <div class="h-[588px] w-full flex items-center !bg-cover !bg-no-repeat" :style="{
     background: `url(${props.item.picture?.data.attributes.url})`
   }">
     <div class="container mx-auto h-full">
