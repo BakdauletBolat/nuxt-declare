@@ -23,15 +23,7 @@ import { IOrder } from '../model/interface';
 import OrderItemPhotoList from './OrderItemPhotoList.vue';
 import OrderStatus from './OrderStatus.vue';
 
-const get_object_status = (status: number) => {
-    switch (status) {
-        case 10:
-            return {
-                'color': '#DC7878',
-                'label': 'Отменен'
-            }
-    }
-}
+
 
 const props = defineProps<{
     item: IOrder
