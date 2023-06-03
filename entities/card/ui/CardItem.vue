@@ -6,10 +6,10 @@
     <section class="flex w-full items-center justify-between gap-[30px]">
       <div class="content">
         <h3 class="card-item__title">{{ cardItem.product?.data.attributes.title }}</h3>
-        <div class="card-item__price">{{ cardItem.product?.data.attributes.price }} <span
+        <div class="card-item__price">{{ cardItem.product?.data.attributes.price }} ₸<span
             class="card-item__old-price">{{
             cardItem.product?.data.attributes.old_price
-          }}</span></div>
+          }} ₸</span></div>
         <div class="card-item__size">Размер 18</div>
         <div class="flex items-center">
           <div @click="quantityValue--" class="card-item__container-q">

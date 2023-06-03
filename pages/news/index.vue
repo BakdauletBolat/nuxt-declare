@@ -39,10 +39,14 @@ watch(route, ()=>{
 });
 
 onMounted(async () => {
+  console.log(route.query);
   isLoadingNewsList.value = true;
   try {
     if (route.query.page != undefined) {
       await newsStore.loadNewsList(parseInt(route.query.page!.toString()));
+    }
+    else {
+      await newsStore.loadNewsList(1);
     }
 
   } catch (e) {

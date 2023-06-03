@@ -11,7 +11,7 @@ export const useAddressCreateStore = defineStore('address-create-store', () => {
     const addressStore = useAddressStore();
 
     const city_value = ref({
-        title: 'Талдықорған',
+        title: 'Загрузка',
         id: 1
     });
 
@@ -26,8 +26,8 @@ export const useAddressCreateStore = defineStore('address-create-store', () => {
 
     const schema = yup.object().shape({
         street: yup.string().required(),
-        house: yup.string().required(),
-        apartment: yup.string().notRequired()
+        house: yup.string().required().min(2, 'Минимальная количество символов 2'),
+        apartment: yup.string().required()
     });
 
     const loadCities = async () => {

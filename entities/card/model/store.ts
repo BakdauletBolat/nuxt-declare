@@ -24,17 +24,21 @@ const useCardStore = defineStore('card-store', () => {
     const closeModal = () => isOpenModal.value = false;
 
 
+    const loadTotalPrice = async () => {
+        const cost = await apiService.value.getCost();
+        if (card.value) {
+            card.value.attributes.total = cost.total;
+            card.value.attributes.total_sale = cost.total_sale;
+        }
+    }
 
     const loadCard = async () => {
         const data = await apiService.value?.getCard();
         card.value = data;
-        const price = await apiService.value.getCost();
-        card.value.attributes.price = price;
-
+        loadTotalPrice();
     }
 
     const loadMoreCard = async (page: number) => {
-
         const data = await apiService.value?.getCard(page);
         if (data.attributes.items.length == 0) {
             return true;
@@ -51,7 +55,7 @@ const useCardStore = defineStore('card-store', () => {
             if (index != -1 && index != undefined) {
                 card.value!.attributes.items[index] = cardItem!;
             }
-            card.value!.attributes.price = await apiService.value.getCost();
+            loadTotalPrice();
         } catch (e) {
             console.log(e);
         }
@@ -62,7 +66,7 @@ const useCardStore = defineStore('card-store', () => {
         try {
             const cardItem: ICardItem | null = await apiService.value?.addCardItem(itemProp);
             card.value?.attributes.items.push(cardItem!);
-            card.value!.attributes.price = await apiService.value.getCost();
+            loadTotalPrice();
         } catch (e) {
             console.log(e);
         }
@@ -76,7 +80,7 @@ const useCardStore = defineStore('card-store', () => {
             if (index != -1 && index != undefined) {
                 card.value!.attributes.items.splice(index, 1);
             }
-            card.value!.attributes.price = await apiService.value.getCost();
+            loadTotalPrice();
         } catch (e) {
             console.log(e);
         }

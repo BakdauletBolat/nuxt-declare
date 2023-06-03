@@ -1,4 +1,5 @@
 import { JsonApi } from "@/models/models";
+import { IProduct } from "~~/models/product";
 
 export interface ICreateOrder {
     user_contact: {
@@ -14,9 +15,21 @@ export interface ICreateOrder {
 }
 
 
-export interface IOrderPosition extends JsonApi {}
+export interface IOrderPosition extends JsonApi {
+    product: {
+        data: IProduct
+    }
+}
 
-export interface IStatus extends JsonApi {}
+export interface IStatus {
+    alias: string;
+    author_id:number;
+    code: number;
+    comment: string;
+    id: number;
+    name: string;
+    order_id: number;
+}
 
 export interface IOrder extends JsonApi {
     attributes: {
@@ -25,6 +38,10 @@ export interface IOrder extends JsonApi {
         number: number;
         status: number;
     };
-    positions: IOrderPosition[];
-    statuses: IStatus[];
+    positions: {
+        data: IOrderPosition[]
+    };
+    statuses: {
+        data: IStatus[]
+    };
 }

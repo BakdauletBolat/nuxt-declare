@@ -7,10 +7,10 @@
     <ProductSliderList :is-loading="homeStore.loadingSpecialPriceProducts"
                        :items="homeStore.specialPriceProducts"></ProductSliderList>
 
-    <div v-if="homeStore.lastCollection" class="mt-20 !bg-cover !bg-no-repeat" :style="{
+    <div v-if="homeStore.lastCollection" class="mt-20 !bg-contain !bg-no-repeat" :style="{
         background: `url(${homeStore.lastCollection.picture.data.attributes.url})`
       }">
-      <div class="text-white container flex mx-auto justify-center md:justify-end">
+      <div class="container flex mx-auto justify-center md:justify-end">
         <div class="md:pt-[100px] md:pr-10 md:pb-16 py-[84px] px-[30px]">
           <div class="text-[28px] uppercase">{{ homeStore.lastCollection?.attributes.title }}</div>
           <div class="text-lg pt-7 uppercase">{{ homeStore.lastCollection?.attributes.author }}</div>
@@ -42,7 +42,7 @@
         передавать атмосферу бренда и украшений Текст, который будет передавать
         атмосферу бренда и украшений Текст, который будет передавать атмосферу бренда и украшений Текст, который будет
         передавать атмосферу бренда и украшений Текст, который будет передавать атмосферу бренда и украшений Текст,
-        который будет передавать атмосферу бренда и украшений</p>
+        который будет передавать атмосферу бренда и украшений</p>
     </div>
   </div>
 </template>

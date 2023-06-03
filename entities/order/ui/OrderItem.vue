@@ -6,10 +6,8 @@
                 <div class="text-[#202020] pt-[12px] text-[16px] font-[500]">{{ item.attributes.number }}</div>
             </section>
             <section>
-                <div class="lowercase" :style="{
-                    color: get_object_status(item.attributes.status)?.color
-                }">{{ get_object_status(item.attributes.status)?.label }}</div>
-                <div class="pt-[12px]">{{ item.attributes.amount }}</div>
+                <OrderStatus :status="item.statuses.data[0]"></OrderStatus>
+                <div class="pt-[12px]">{{ item.attributes.amount }} ₸</div>
             </section>
         </div>
         <OrderItemPhotoList class="mt-[30px]" :photos="photos"></OrderItemPhotoList>
@@ -23,9 +21,7 @@
 <script lang="ts" setup>
 import { IOrder } from '../model/interface';
 import OrderItemPhotoList from './OrderItemPhotoList.vue';
-
-const photos = ['https://www.pngmart.com/files/6/Ring-PNG-Photo.png', 'https://i.pinimg.com/originals/56/37/66/56376681bea0c4135a00f87520e9d02e.png']
-
+import OrderStatus from './OrderStatus.vue';
 
 const get_object_status = (status: number) => {
     switch (status) {
@@ -37,7 +33,15 @@ const get_object_status = (status: number) => {
     }
 }
 
-defineProps<{
+const props = defineProps<{
     item: IOrder
-}>()
+}>();
+
+
+const photos = computed(()=>{
+    return props.item.positions.data.map(position => {
+        return position.product.data.picture.data.attributes.url
+    });
+});
+
 </script>

@@ -18,7 +18,7 @@ class CardAPILocal {
         return card;
     }
 
-    getCost(): number {
+    getCost() {
         const card: ICard = JSON.parse(localStorage.getItem(this.card_key)!);
         let price = 0
         let old_price = 0
@@ -26,7 +26,10 @@ class CardAPILocal {
             price += item.product.data.attributes.price * item.attributes.quantity;
             old_price += item.product.data.attributes.old_price * item.attributes.quantity;
         });
-        return price;
+        return {
+            total: price,
+            total_sale: old_price
+        };
     }
 
     addCardItem(itemProp: ICardItem): ICardItem | null {

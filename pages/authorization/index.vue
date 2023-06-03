@@ -10,7 +10,9 @@
           <PhoneInput name="phone" label="Телефон*"></PhoneInput>
           <PasswordInput class="mt-[30px]" label="Пароль*" name="password"/>
           <Button type="submit" :is-loading="authStore.isLoading" class="mt-[30px] uppercase">ВОЙТИ</Button>
-          <a href="#" class="text-[#525252] mt-[20px] block">Забыли пароль ?</a>
+          <RouterLink :to="{
+            name: 'forget-password'
+          }" class="text-[#525252] mt-[20px] block">Забыли пароль ?</RouterLink>
         </Form>
       </section>
       <section class="mt-[36px] block max-w-[500px] mx-auto">

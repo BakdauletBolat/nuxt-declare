@@ -16,6 +16,8 @@ export interface ICard extends JsonApi {
     attributes: {
         price?: number;
         old_price?: number;
+        total?: number;
+        total_sale?: number;
         items: ICardItem[]
     }
 }

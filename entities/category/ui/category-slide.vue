@@ -26,7 +26,9 @@
 </template>
 <script setup lang="ts">
 import {ICategory} from "@/models/category";
+
 defineProps<{
   item: ICategory
 }>();
+
 </script>

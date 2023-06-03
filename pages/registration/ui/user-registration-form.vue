@@ -28,7 +28,7 @@
         label="Дата*"
         name="birthday"
         class="mt-[30px]"/>
-    <Button :is-loading="registrationStore.isLoading" type="submit" class="mt-[30px]">Войти</Button>
+    <Button :is-loading="registrationStore.isLoading" type="submit" class="mt-[30px]">Регистрация</Button>
   </Form>
 </template>
 <script lang="ts" setup>

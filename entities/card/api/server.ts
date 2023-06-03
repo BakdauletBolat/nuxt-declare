@@ -5,14 +5,20 @@ import {ApiService} from "~/services/api-service";
 class CardAPIServer extends ApiService {
 
     async getCost() {
-        const price: number = (await this.get<{
+        const res = (await this.get<{
             data: {
                 attributes: {
-                    total: number
+                    total: number,
+                    total_sale: number,
                 }
             }
-        }>('/user/carts/')).data.attributes.total;
-        return price;
+        }>('/user/carts/'));
+        const price: number = res.data.attributes.total;
+        const total_sale: number = res.data.attributes.total_sale;
+        return {
+            total: price,
+            total_sale: total_sale
+        };
     }
 
     async getCard(page?: number): Promise<ICard> {

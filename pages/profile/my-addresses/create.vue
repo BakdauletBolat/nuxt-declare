@@ -2,7 +2,6 @@
   <div>
     <PageTitleUi back-title="Адреса доставки" title="Добавить адрес"></PageTitleUi>
     <Form @submit="createAddress"
-
           @invalid-submit="onInvalidSubmit"
           :validation-schema="addressCreateStore.schema">
       <AddressCreateForm></AddressCreateForm>
@@ -30,9 +29,6 @@ const onInvalidSubmit = (invalid: any, as: any) => {
 
 const route = useRoute();
 
-onMounted(() => {
-  console.log(route.params);
-})
 
 const navigateToBack = () => {
   if (route.query.backUrl) {
@@ -50,7 +46,6 @@ const createAddress = async (values: any) => {
   isLoading.value = true;
   try {
     const address = await addressCreateStore.submit(values);
-    console.log(values);
     if (address != undefined) {
       addressStore.addresses_list.data.push(address!.data);
     }
