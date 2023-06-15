@@ -19,7 +19,7 @@ class CategoryService extends ApiService {
     async getCategory(id: string | string[]) {
         return await this.get<{
             data: ICategory
-        }>(`/catalog/categories/${id}/view/`, {},['menus'])
+        }>(`/catalog/categories/${id}/view/`, {},['menus','picture'])
     }
 
 }

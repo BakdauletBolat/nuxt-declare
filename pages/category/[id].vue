@@ -1,6 +1,6 @@
 <template>
   <SafeArea>
-    <img alt="banner" class="h-[180px] w-full" src="@/assets/images/Banner.png"/>
+    <img alt="banner" class="h-[180px] w-full object-cover" :src="headerStore.activeCategory?.picture?.data?.attributes.url"/>
     <Breadcrumb :centered="true" :options="options"></Breadcrumb>
     <ProductFilterHeader></ProductFilterHeader>
     <ProductList :is-loading="productStore.isLoadingProducts"
@@ -35,6 +35,7 @@ const router = useRouter();
 
 const loadActiveCategory = async () => {
   const category: ICategory = (await categoryService.getCategory(route.params.id)).data;
+  console.log(category);
   headerStore.activeCategory = category;
 }
 
