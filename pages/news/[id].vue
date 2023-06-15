@@ -8,7 +8,7 @@
            :src="newsStore.news?.data.picture?.data.attributes.url"/>
       <div class="mt-[28px] text-[#525252] text-center text-[16px]">26 АВГУСТА 2022 ГОДА</div>
       <h1 class="text-[21px] text-[#202020] mt-[20px]">{{ newsStore.news.data.attributes?.title }}</h1>
-      <p :v-html="newsStore.news.data.attributes?.description" class="mt-[16px] text-[#202020]"></p>
+      <p v-html="newsStore.news.data.attributes?.description" class="mt-[16px] text-[#202020]"></p>
     </div>
   </SafeArea>
 
